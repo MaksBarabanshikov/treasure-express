@@ -28,7 +28,24 @@ header {
   padding: 50px 0;
   width: 100vw;
   z-index: 100;
+  transition: all 0.2s ease-in-out;
 }
+
+.header-shadow {
+  background-color: $blackTransparent;
+  padding: 20px 0;
+}
+
+footer {
+  background-color: $dark;
+  padding: 26px;
+
+  span {
+    color: $cameo;
+    text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
 h1 {
   font-weight: 700;
   font-size: 56px;
@@ -203,3 +220,5 @@ h1 {
     }
   }
 }
+
+
