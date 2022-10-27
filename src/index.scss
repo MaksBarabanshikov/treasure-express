@@ -1,0 +1,205 @@
+@import "bootstrap/scss/bootstrap-reboot";
+
+@import "bootstrap/scss/bootstrap";
+
+@import "assets/scss/variables";
+
+@import "assets/font/fonts";
+
+@import "assets/scss/buttons";
+
+body {
+  margin: 0;
+  font-family: "Changa", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+span, p {
+  color: $cameo;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  padding: 50px 0;
+  width: 100vw;
+  z-index: 100;
+}
+h1 {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 60px;
+  color: $orange
+}
+
+.main {
+  &-section {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background: url('./assets/img/bg.jpg') no-repeat center;
+  }
+
+  .footer-section {
+    background-color: $brown;
+    color: $white;
+    padding: 100px 0;
+
+    &__contract {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $dark-brown;
+
+      span {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        opacity: 0.5;
+      }
+
+      div {
+        span {
+          opacity: 1;
+        }
+      }
+
+    }
+
+    &__info {
+      background: url('assets/img/board.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 50px 60px;
+
+      .row {
+        p {
+          font-weight: 700;
+          font-size: 42px;
+          line-height: 40px;
+        }
+
+        span {
+          color: $yellow;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 34px;
+        }
+      }
+    }
+
+    &__presentations {
+      background: url('assets/img/board-present.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 60px 30px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    h4 {
+      color: $cameo;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 34px;
+    }
+
+    .last-section {
+      margin-top: 100px;
+    }
+
+    .what-is-treasure {
+      margin-bottom: 70px;
+
+      h1 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 60px;
+      }
+
+      p {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 42px;
+      }
+    }
+
+    .rules {
+      background: url('./assets/img/board-rules.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 75px 56px;
+      position: relative;
+
+      &__title {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -22px);
+      }
+
+      li {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 40px;
+        color: $cameo;
+      }
+    }
+
+    .level-price {
+      &__item {
+        padding: 34px 24px 24px 24px;
+        background: url("./assets/img/price-item.png") no-repeat;
+        background-size: 100% 100%;
+
+        h3 {
+          font-weight: 700;
+          font-size: 34px;
+          line-height: 40px;
+          text-align: center;
+          color: $cameo;
+          text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        &-price {
+          background-color: $dark;
+          position: relative;
+          text-align: right;
+          border-radius: 20px;
+          color: $yellow;
+          padding: 5px;
+          transition: all 0.2s ease-in-out;
+
+          span {
+            transition: color 0.2s ease-in-out;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 14px;
+          }
+
+          img {
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.2s ease-in-out;
+          }
+
+          &:hover {
+            background-color: $white;
+            span {
+              color: $dark;
+            }
+
+            img {
+              transform: translateY(-70%);
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
