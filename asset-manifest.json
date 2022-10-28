@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/treasure-express/static/css/main.107fd4dd.css",
+    "main.js": "/treasure-express/static/js/main.bca75f01.js",
+    "static/js/787.04bb6996.chunk.js": "/treasure-express/static/js/787.04bb6996.chunk.js",
+    "static/media/logo-big.svg": "/treasure-express/static/media/logo-big.eaa6ad2fb5cc3f900853b2d028bdd332.svg",
+    "static/media/logo.svg": "/treasure-express/static/media/logo.c1a3a58f23e146bbf2784a9c05d5b7b0.svg",
+    "static/media/bg.jpg": "/treasure-express/static/media/bg.3f857c85120893046823.jpg",
+    "static/media/Changa-ExtraLight.ttf": "/treasure-express/static/media/Changa-ExtraLight.0742d4e55b85ffa7e02a.ttf",
+    "static/media/Changa-SemiBold.ttf": "/treasure-express/static/media/Changa-SemiBold.4133812d1bab324e2799.ttf",
+    "static/media/Changa-Light.ttf": "/treasure-express/static/media/Changa-Light.07e81bed68f8de75cada.ttf",
+    "static/media/Changa-Medium.ttf": "/treasure-express/static/media/Changa-Medium.f2b78c9eca2ad67dc1e6.ttf",
+    "static/media/Changa-Bold.ttf": "/treasure-express/static/media/Changa-Bold.f02074da4f5106c6a0e3.ttf",
+    "static/media/Changa-ExtraBold.ttf": "/treasure-express/static/media/Changa-ExtraBold.4b13ebb615244cbf3128.ttf",
+    "static/media/Changa-Regular.ttf": "/treasure-express/static/media/Changa-Regular.f4a78f7cf289c800982b.ttf",
+    "static/media/button-big.svg": "/treasure-express/static/media/button-big.29bd1c0b3f583154fc9c.svg",
+    "static/media/avatar.svg": "/treasure-express/static/media/avatar.0b60c54e3110bfde9683075b3cf0971c.svg",
+    "static/media/board-title.png": "/treasure-express/static/media/board-title.86188076d3001a82d918.png",
+    "static/media/coin.svg": "/treasure-express/static/media/coin.c68edcbf30606de4060a3d06d0900240.svg",
+    "static/media/faq.svg": "/treasure-express/static/media/faq.609db0c0124c17a52fe0d8d0ccca0209.svg",
+    "index.html": "/treasure-express/index.html",
+    "static/media/link_icon.svg": "/treasure-express/static/media/link_icon.2c3ab5acb7982d20f59e42189349c9d4.svg",
+    "static/media/copy_icon.svg": "/treasure-express/static/media/copy_icon.248f6909f714796714eed342345cc808.svg",
+    "main.107fd4dd.css.map": "/treasure-express/static/css/main.107fd4dd.css.map",
+    "main.bca75f01.js.map": "/treasure-express/static/js/main.bca75f01.js.map",
+    "787.04bb6996.chunk.js.map": "/treasure-express/static/js/787.04bb6996.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.107fd4dd.css",
+    "static/js/main.bca75f01.js"
+  ]
+}
