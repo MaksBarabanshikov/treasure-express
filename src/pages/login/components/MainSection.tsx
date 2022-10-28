@@ -1,5 +1,5 @@
 import React from 'react';
-import bigLogo from "../../../assets/img/logo-big.svg";
+import bigLogo from "../../../assets/img/icons/logo-big.svg";
 import { Link } from "react-router-dom";
 
 const MainSection = () => {

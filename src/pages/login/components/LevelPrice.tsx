@@ -1,8 +1,14 @@
 import {LevelPriceList} from "./LevelPriceList";
 
-export const LevelPrice = () => {
+interface Props {
+  col: number
+}
+
+export const LevelPrice = ({col}: Props) => {
+
+  const colClass = `col-${col}`
     return (
-        <div className="level-price col-6 text-center">
+        <div className={`level-price ${colClass} text-center`}>
             <h1 className="mb-5">
                 LEVEL PRICES
             </h1>

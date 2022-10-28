@@ -53,12 +53,11 @@ h1 {
   color: $orange
 }
 
-.main {
-  &-section {
+  .main-section {
     height: 100vh;
     width: 100vw;
     background-size: cover;
-    background: url('./assets/img/bg.jpg') no-repeat center;
+    background: url('assets/img/bg/bg.jpg') no-repeat center;
   }
 
   .footer-section {
@@ -87,7 +86,7 @@ h1 {
     }
 
     &__info {
-      background: url('assets/img/board.png') no-repeat;
+      background: url('assets/img/bg/board.png') no-repeat;
       background-size: 100% 100%;
       padding: 50px 60px;
 
@@ -108,7 +107,7 @@ h1 {
     }
 
     &__presentations {
-      background: url('assets/img/board-present.png') no-repeat;
+      background: url('assets/img/bg/board-present.png') no-repeat;
       background-size: 100% 100%;
       padding: 60px 30px;
     }
@@ -145,7 +144,7 @@ h1 {
     }
 
     .rules {
-      background: url('./assets/img/board-rules.png') no-repeat;
+      background: url('assets/img/bg/board-rules.png') no-repeat;
       background-size: 100% 100%;
       padding: 75px 56px;
       position: relative;
@@ -168,7 +167,7 @@ h1 {
     .level-price {
       &__item {
         padding: 34px 24px 24px 24px;
-        background: url("./assets/img/price-item.png") no-repeat;
+        background: url("assets/img/icons/price-item.png") no-repeat;
         background-size: 100% 100%;
 
         h3 {
@@ -206,6 +205,7 @@ h1 {
 
           &:hover {
             background-color: $white;
+
             span {
               color: $dark;
             }
@@ -219,6 +219,57 @@ h1 {
 
     }
   }
+
+.user-section {
+  &__info {
+    h4 {
+      color: $yellow;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 34px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .user-id {
+    display: inline-block;
+    background-color: $dark;
+    padding: 12px 20px;
+    color: $yellow;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 14px;
+    border: 2px solid #915E31;
+    border-radius: 20px;
+  }
 }
 
+.text-shadow {
+  text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.personal-board {
+  background: url("./assets/img/bg/board-personal.png");
+  background-size: 100% 100%;
+  padding: 40px 30px;
+  height: 148px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.personal-link {
+  color: $yellow;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 34px;
+}
+
+.brown-bg {
+  background-color: $brown;
+  height: 100vh;
+  width: 100vw;
+  top: 100vh;
+  z-index: -1000;
+  position: absolute;
+}
 

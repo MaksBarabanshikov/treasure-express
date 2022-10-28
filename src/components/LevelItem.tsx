@@ -1,4 +1,4 @@
-import coin from '../assets/img/coin.svg'
+import coin from '../assets/img/icons/coin.svg'
 type Props = {
     level: string
     price: string

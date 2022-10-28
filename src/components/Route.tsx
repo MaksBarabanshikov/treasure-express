@@ -3,7 +3,7 @@ import {
   Route,
 } from "react-router-dom";
 import { LoginPage } from "../pages/login/LoginPage";
-import { MainPage } from "../pages/mainPage/Main";
+import { MainPage } from "../pages/mainPage/MainPage";
 
 export const RouteList = () => {
   return (

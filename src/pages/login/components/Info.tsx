@@ -1,7 +1,7 @@
 import React from "react";
 
-import copyIcon from "../../../assets/img/copy_icon.svg"
-import linkIcon from "../../../assets/img/link_icon.svg"
+import copyIcon from "../../../assets/img/icons/copy_icon.svg"
+import linkIcon from "../../../assets/img/icons/link_icon.svg"
 
 export const Info = () => {
     return (

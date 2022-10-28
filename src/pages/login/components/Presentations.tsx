@@ -1,6 +1,6 @@
-import Eng from "../../../assets/img/eng.jpg";
-import download from "../../../assets/img/download.png";
-import Rus from "../../../assets/img/rus.jpg";
+import Eng from "../../../assets/img/icons/eng.jpg";
+import download from "../../../assets/img/icons/download.png";
+import Rus from "../../../assets/img/icons/rus.jpg";
 
 export const Presentations = () => {
     return (

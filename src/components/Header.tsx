@@ -1,4 +1,4 @@
-import logo from '../assets/img/logo.svg'
+import logo from '../assets/img/icons/logo.svg'
 import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import {RulesList} from "./RulesList";
-import boardTitle from '../../../assets/img/board-title.png'
+import boardTitle from '../../../assets/img/bg/board-title.png'
 export const WhatIs = () => {
     return (
         <div className="col-6">
