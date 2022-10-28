@@ -1,7 +1,7 @@
 import MainSection from "./components/MainSection";
 import FooterSection from "./components/FooterSection";
 
-export const MainPage = () => {
+export const LoginPage = () => {
     return(
         <main className='main'>
             <MainSection/>

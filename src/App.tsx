@@ -1,16 +1,19 @@
-import React from 'react';
-import {Header} from "./components/Header";
-import {MainPage} from "./pages/main/MainPage";
-import {Footer} from "./components/Footer";
+import React from "react";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { RouteList } from "./components/Route";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-    return (
-        <div className="wrapper">
-            <Header/>
-            <MainPage/>
-            <Footer/>
-        </div>
-    );
+  return (
+    <BrowserRouter>
+      <div className="wrapper">
+        <Header />
+        <RouteList />
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

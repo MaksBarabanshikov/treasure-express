@@ -1,5 +1,6 @@
 import logo from '../assets/img/logo.svg'
 import {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
     const [scroll, setScroll] = useState(0);
@@ -19,8 +20,9 @@ export const Header = () => {
         }>
             <div className="container">
                 <div className="header__wrap d-flex justify-content-between align-items-center w-100">
-                    <img src={logo} alt=""/>
-
+                    <Link to={"/"}>
+                        <img src={logo} alt=""/>
+                    </Link>
                     <button className="green-btn btn">
                         Connect metamask
                     </button>

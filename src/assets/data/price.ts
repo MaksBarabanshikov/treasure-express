@@ -3,14 +3,15 @@ import { v4 as uuidv4 } from 'uuid'
 interface ILevelPrice {
     id: string;
     level: string;
-    price: string
+    price: string;
 }
 
 export const LevelPriceData: ILevelPrice[] = [
     {
         id: uuidv4(),
         level: "LVL 1",
-        price: "0.05 BNB"
+        price: "0.05 BNB",
+
     },
     {
         id: uuidv4(),

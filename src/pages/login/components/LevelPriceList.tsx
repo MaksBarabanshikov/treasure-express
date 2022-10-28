@@ -8,6 +8,7 @@ export const LevelPriceList = () => {
                 LevelPriceData.map(item =>
                     (
                         <LevelItem
+                            key={item.id}
                             level={item.level}
                             price={item.price}
                         />
