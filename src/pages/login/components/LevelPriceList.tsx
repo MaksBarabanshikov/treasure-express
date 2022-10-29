@@ -11,6 +11,7 @@ export const LevelPriceList = () => {
                             key={item.id}
                             level={item.level}
                             price={item.price}
+                            type={item.type}
                         />
                     )
                 )

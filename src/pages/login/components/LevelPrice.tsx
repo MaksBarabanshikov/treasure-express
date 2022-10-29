@@ -1,18 +1,32 @@
 import {LevelPriceList} from "./LevelPriceList";
 
 interface Props {
-  col: number
+  col: number,
+  className?: string,
+  titleEl?: string,
 }
 
-export const LevelPrice = ({col}: Props) => {
+export const LevelPrice = ({ titleEl, col, className }: Props) => {
 
   const colClass = `col-${col}`
+
+  const divClass = `level-price ${colClass} ${className} text-center`
+
+  const mainPageClass = `level-price ${colClass} ${className} text-center main-page`
+
+  if (titleEl) {
     return (
-        <div className={`level-price ${colClass} text-center`}>
-            <h1 className="mb-5">
-                LEVEL PRICES
-            </h1>
-            <LevelPriceList/>
-        </div>
+      <div className={divClass}>
+        <h1 className="mb-5">
+          { titleEl }
+        </h1>
+        <LevelPriceList/>
+      </div>
     );
+  }
+  return (
+    <div className={mainPageClass}>
+      <LevelPriceList/>
+    </div>
+  )
 };

@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode,
+  className?: string,
 }
 
-export const Flex = ({ children }: Props) => {
+export const Flex = ({ children, className }: Props) => {
     return (
-        <div className="d-flex align-items-center">{ children }</div>
+        <div className={`d-flex align-items-center ${className}`}>{ children }</div>
     );
 };

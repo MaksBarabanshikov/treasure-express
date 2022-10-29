@@ -5,7 +5,7 @@ export function LastSection() {
     return (
         <section className="last-section row">
             <WhatIs/>
-            <LevelPrice col={6}/>
+            <LevelPrice titleEl={'LEVEL PRICES'} col={6}/>
         </section>
     );
 }

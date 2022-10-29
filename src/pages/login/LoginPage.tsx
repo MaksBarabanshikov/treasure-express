@@ -3,9 +3,9 @@ import FooterSection from "./components/FooterSection";
 
 export const LoginPage = () => {
     return(
-        <main className='main'>
+        <div className='wrap'>
             <MainSection/>
             <FooterSection/>
-        </main>
+        </div>
     )
 }

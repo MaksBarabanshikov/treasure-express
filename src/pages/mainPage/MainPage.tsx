@@ -1,25 +1,21 @@
+import React from "react";
 import { BgSection } from "./components/BgSection";
 import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
-import { BgLast } from "./components/BgLast";
-import { Info } from "../login/components/Info";
-import { Presentations } from "../login/components/Presentations";
-import React from "react";
+import { Transactions } from "../../components/transaction/Transactions";
+import { transactions } from "../../assets/data/transactions";
+import { InfoSection } from "../../components/InfoSection";
+import { Container } from "../../components/layouts/Container";
 
 export const MainPage = () => {
   return (
-    <>
-      <BgSection />
-      <BgLast />
+    <div className="wrap">
       <UserSection />
-      <div className="container">
-        <LevelPrice col={12}/>
-        <div className="row">
-          <Info/>
-          <Presentations/>
-        </div>
-      </div>
-
-    </>
+      <Container>
+        <LevelPrice col={10} className={"main-level"}/>
+        <InfoSection />
+        <Transactions items={transactions}/>
+      </Container>
+    </div>
 )
 };

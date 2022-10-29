@@ -22,18 +22,18 @@ span, p {
   color: $cameo;
 }
 
+.wrapper {
+  max-height: 100vh;
+  overflow: hidden;
+  background: url('./assets/img/bg/bg.jpg');
+}
+
 header {
-  position: fixed;
+  position: absolute;
   top: 0;
   padding: 50px 0;
   width: 100vw;
   z-index: 100;
-  transition: all 0.2s ease-in-out;
-}
-
-.header-shadow {
-  background-color: $blackTransparent;
-  padding: 20px 0;
 }
 
 footer {
@@ -53,172 +53,123 @@ h1 {
   color: $orange
 }
 
-  .main-section {
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background: url('assets/img/bg/bg.jpg') no-repeat center;
+.main-section {
+  height: 100vh;
+  width: 100vw;
+}
+
+.footer-section {
+  color: $white;
+  padding: 100px 0;
+
+  &__contract {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $dark-brown;
+
+    span {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      opacity: 0.5;
+    }
+
+    div {
+      span {
+        opacity: 1;
+      }
+    }
+
   }
 
-  .footer-section {
-    background-color: $brown;
-    color: $white;
-    padding: 100px 0;
+  &__info {
+    background: url('assets/img/bg/board.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 50px 60px;
 
-    &__contract {
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid $dark-brown;
-
-      span {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 28px;
-        opacity: 0.5;
-      }
-
-      div {
-        span {
-          opacity: 1;
-        }
-      }
-
-    }
-
-    &__info {
-      background: url('assets/img/bg/board.png') no-repeat;
-      background-size: 100% 100%;
-      padding: 50px 60px;
-
-      .row {
-        p {
-          font-weight: 700;
-          font-size: 42px;
-          line-height: 40px;
-        }
-
-        span {
-          color: $yellow;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 34px;
-        }
-      }
-    }
-
-    &__presentations {
-      background: url('assets/img/bg/board-present.png') no-repeat;
-      background-size: 100% 100%;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-    }
-
-    h4 {
-      color: $cameo;
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 34px;
-    }
-
-    .last-section {
-      margin-top: 100px;
-    }
-
-    .what-is-treasure {
-      margin-bottom: 70px;
-
-      h1 {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 60px;
-      }
-
+    .row {
       p {
         font-weight: 700;
-        font-size: 24px;
-        line-height: 42px;
-      }
-    }
-
-    .rules {
-      background: url('assets/img/bg/board-rules.png') no-repeat;
-      background-size: 100% 100%;
-      padding: 75px 56px;
-      position: relative;
-
-      &__title {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -22px);
-      }
-
-      li {
-        font-weight: 500;
-        font-size: 18px;
+        font-size: 42px;
         line-height: 40px;
-        color: $cameo;
-      }
-    }
-
-    .level-price {
-      &__item {
-        padding: 34px 24px 24px 24px;
-        background: url("assets/img/icons/price-item.png") no-repeat;
-        background-size: 100% 100%;
-
-        h3 {
-          font-weight: 700;
-          font-size: 34px;
-          line-height: 40px;
-          text-align: center;
-          color: $cameo;
-          text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
-        }
-
-        &-price {
-          background-color: $dark;
-          position: relative;
-          text-align: right;
-          border-radius: 20px;
-          color: $yellow;
-          padding: 5px;
-          transition: all 0.2s ease-in-out;
-
-          span {
-            transition: color 0.2s ease-in-out;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 14px;
-          }
-
-          img {
-            position: absolute;
-            left: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.2s ease-in-out;
-          }
-
-          &:hover {
-            background-color: $white;
-
-            span {
-              color: $dark;
-            }
-
-            img {
-              transform: translateY(-70%);
-            }
-          }
-        }
       }
 
+      span {
+        color: $yellow;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 34px;
+      }
     }
   }
+
+  &__presentations {
+    background: url('assets/img/bg/board-present.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 60px 30px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    color: $cameo;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .last-section {
+    margin-top: 100px;
+  }
+
+  .what-is-treasure {
+    margin-bottom: 70px;
+
+    h1 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 60px;
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 42px;
+    }
+  }
+
+  .rules {
+    background: url('assets/img/bg/board-rules.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 75px 56px;
+    position: relative;
+
+    &__title {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -22px);
+    }
+
+    li {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 40px;
+      color: $cameo;
+    }
+  }
+}
+
+.info-section {
+  h4 {
+    color: $cameo;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 34px;
+  }
+}
 
 .user-section {
   &__info {
@@ -230,18 +181,18 @@ h1 {
       margin-bottom: 5px;
     }
   }
+}
 
-  .user-id {
-    display: inline-block;
-    background-color: $dark;
-    padding: 12px 20px;
-    color: $yellow;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 14px;
-    border: 2px solid #915E31;
-    border-radius: 20px;
-  }
+.user-id {
+  display: inline-block;
+  background-color: $dark;
+  padding: 12px 20px;
+  color: $yellow;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 14px;
+  border: 2px solid #915E31;
+  border-radius: 20px;
 }
 
 .text-shadow {
@@ -257,6 +208,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .personal-link {
   color: $yellow;
   font-weight: 500;
@@ -266,10 +218,170 @@ h1 {
 
 .brown-bg {
   background-color: $brown;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   top: 100vh;
   z-index: -1000;
   position: absolute;
+}
+
+.level-price {
+  &__item {
+    padding: 34px 24px 24px 24px;
+    background: url("assets/img/bg/price-item-brown.svg") no-repeat;
+    background-size: 100% 100%;
+
+    h3 {
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 40px;
+      text-align: center;
+      color: $cameo;
+      text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    &-price {
+      background-color: $dark;
+      position: relative;
+      text-align: right;
+      border-radius: 20px;
+      color: $yellow;
+      padding: 5px;
+      transition: all 0.2s ease-in-out;
+
+
+
+      span {
+        transition: color 0.2s ease-in-out;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      img {
+        position: absolute;
+        left: -5px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        background-color: $brown;
+
+        //span {
+        //  color: $dark;
+        //}
+
+        img {
+          transform: translateY(-70%);
+        }
+      }
+    }
+  }
+
+  &.main-level {
+    margin: 50px auto 100px auto;
+
+    h1 {
+      display: none;
+    }
+
+    .level-price__item {
+      width: 240px !important;
+      height: 240px;
+      padding: 0 30px;
+      margin-bottom: 20px;
+
+      &-price {
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        img {
+          width: 64px !important;
+          height: 64px !important;
+        }
+
+        span {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 14px;
+          color: $yellow;
+        }
+      }
+
+      h3 {
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 40px;
+        margin-bottom: 37px;
+      }
+    }
+  }
+
+}
+
+.main-page {
+  .level-price__item-price {
+    max-width: 170px;
+    border-radius: 30px;
+  }
+
+  img {
+    left: 0;
+  }
+
+  .level-price__item {
+    &_current {
+      background: url("./assets/img/bg/current-level.png");
+    }
+
+    &_locked {
+      background: url("./assets/img/bg/price-item-stone.png");
+    }
+  }
+}
+
+.transaction__price {
+  color: $yellow;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.created-at {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #915E31;
+}
+
+.transactions {
+  margin: 100px 0;
+  background: url("./assets/img/bg/board-trans.svg") no-repeat center;
+  background-size: 100%;
+  padding: 80px 120px 66px 60px;
+  height: 600px;
+
+  &__item {
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    &:nth-child(3n):after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #877862;
+      opacity: 0.1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
 
