@@ -2,7 +2,7 @@ import {RulesList} from "./RulesList";
 import boardTitle from '../../../assets/img/bg/board-title.png'
 export const WhatIs = () => {
     return (
-        <div className="col-6">
+        <div className="col-12 col-xl-6">
             <div className="what-is-treasure mb-5">
                 <h1>WHAT IS TREASURE EXPRESS?</h1>
                 <p>

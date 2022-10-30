@@ -8,7 +8,7 @@ interface Props {
 
 export const LevelPrice = ({ titleEl, col, className }: Props) => {
 
-  const colClass = `col-${col}`
+  const colClass = `col-xl-${col} col-12 mt-5 mt-xl-0`
 
   const divClass = `level-price ${colClass} ${className} text-center`
 

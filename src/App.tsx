@@ -1,19 +1,25 @@
 import React from "react";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { Header } from "./components/header/Header";
+import { Footer } from "./components/footer/Footer";
 import { RouteList } from "./components/Route";
 import { BrowserRouter } from "react-router-dom";
-import Scrollbars from "react-custom-scrollbars-2";
+import "overlayscrollbars/css/OverlayScrollbars.css"
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="wrapper">
-        <Scrollbars style={{ height: "100vh" }}>
+        <OverlayScrollbarsComponent
+          style={{
+            height: "100vh",
+            zIndex: "100"
+          }}
+        >
           <Header />
           <RouteList />
           <Footer />
-        </Scrollbars>
+        </OverlayScrollbarsComponent>
       </div>
     </BrowserRouter>
   );

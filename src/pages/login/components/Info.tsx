@@ -5,7 +5,7 @@ import linkIcon from "../../../assets/img/icons/link_icon.svg"
 
 export const Info = () => {
     return (
-        <div className="col-8">
+        <div className="col-12 col-xl-8">
             <div className="footer-section__info w-100 h-100">
                 <h1>SmartGame Pro Info</h1>
                 <div className="footer-section__contract d-flex justify-content-between">

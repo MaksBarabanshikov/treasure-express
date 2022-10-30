@@ -1,18 +1,25 @@
+import React from "react";
 import { ITransaction } from "../../assets/data/transactions";
 import { TransactionItem } from "./TransactionItem";
-import Scrollbars from "react-custom-scrollbars-2";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import titleTab from "../../assets/img/bg/transactions_title.png"
 
 interface Props {
   items: ITransaction[];
 }
 
+// style={{height: 450 }}
+
+
 export const Transactions = ({ items }: Props) => {
   return (
     <div className="transactions">
+      <img className="transactions__title" src={titleTab} alt="Transaction title" />
       <div className="transactions__scroll">
-        <Scrollbars
-          style={{ overflowX: 'hidden' ,height: 450 }}
-
+        <OverlayScrollbarsComponent
+          style={{
+            height: 450
+          }}
         >
           {
             items.map((item) => (
@@ -26,7 +33,7 @@ export const Transactions = ({ items }: Props) => {
               />
             ))
           }
-        </Scrollbars>
+        </OverlayScrollbarsComponent>
       </div>
     </div>
   );

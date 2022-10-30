@@ -1,6 +1,7 @@
-import logo from '../assets/img/icons/logo.svg'
-import {useEffect, useState} from "react";
+import logo from '../../assets/img/icons/logo.svg'
 import { Link } from "react-router-dom";
+import { Registration } from "../popup/registration/Registration";
+import './header.scss';
 
 export const Header = () => {
     return (
@@ -10,9 +11,7 @@ export const Header = () => {
                     <Link to={"/"}>
                         <img src={logo} alt=""/>
                     </Link>
-                    <button className="green-btn btn">
-                        Connect metamask
-                    </button>
+                    <Registration />
                 </div>
             </div>
         </header>

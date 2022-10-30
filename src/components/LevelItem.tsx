@@ -23,7 +23,7 @@ export const LevelItem = ({level, type, price}: Props) => {
     }
 
     return (
-        <div className="col-3 p-2" >
+        <div className="col-6 col-sm-4 col-md-3 p-2" >
             <button className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
                 <h3>{level}</h3>
                 <div className="level-price__item-price">

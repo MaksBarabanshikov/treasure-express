@@ -28,29 +28,15 @@ span, p {
   background: url('./assets/img/bg/bg.jpg');
 }
 
-header {
-  position: absolute;
-  top: 0;
-  padding: 50px 0;
-  width: 100vw;
-  z-index: 100;
-}
-
-footer {
-  background-color: $dark;
-  padding: 26px;
-
-  span {
-    color: $cameo;
-    text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
-  }
-}
-
 h1 {
   font-weight: 700;
   font-size: 56px;
   line-height: 60px;
-  color: $orange
+  color: $orange;
+
+  @media (max-width: 992px) {
+    font-size: 30px;
+  }
 }
 
 .main-section {
@@ -72,6 +58,10 @@ h1 {
       font-size: 20px;
       line-height: 28px;
       opacity: 0.5;
+
+      @media (max-width: 992px) {
+        font-size: 14px;
+      }
     }
 
     div {
@@ -87,11 +77,19 @@ h1 {
     background-size: 100% 100%;
     padding: 50px 60px;
 
+    @media (max-width: 600px) {
+      padding: 10px 40px;
+    }
+
     .row {
       p {
         font-weight: 700;
         font-size: 42px;
         line-height: 40px;
+        @media (max-width: 992px) {
+          font-size: 26px;
+          margin: 0;
+        }
       }
 
       span {
@@ -99,6 +97,10 @@ h1 {
         font-weight: 500;
         font-size: 24px;
         line-height: 34px;
+
+        @media (max-width: 992px) {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -118,6 +120,9 @@ h1 {
     font-weight: 500;
     font-size: 24px;
     line-height: 34px;
+    @media (max-width: 992px) {
+      font-size: 16px;
+    }
   }
 
   .last-section {
@@ -131,12 +136,19 @@ h1 {
       font-weight: 700;
       font-size: 48px;
       line-height: 60px;
+      @media (max-width: 992px) {
+        font-size: 24px;
+      }
     }
 
     p {
       font-weight: 700;
       font-size: 24px;
       line-height: 42px;
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -158,6 +170,10 @@ h1 {
       font-size: 18px;
       line-height: 40px;
       color: $cameo;
+
+      @media (max-width: 992px) {
+        font-size: 14px;
+      }
     }
   }
 }
@@ -168,6 +184,10 @@ h1 {
     font-weight: 500;
     font-size: 24px;
     line-height: 34px;
+
+    @media (max-width: 992px) {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -238,6 +258,10 @@ h1 {
       text-align: center;
       color: $cameo;
       text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+
+      @media (max-width: 992px) {
+        font-size: 24px;
+        line-height: 30px;}
     }
 
     &-price {
@@ -249,6 +273,10 @@ h1 {
       padding: 5px;
       transition: all 0.2s ease-in-out;
 
+      @media (max-width: 1200px) {
+        max-width: 100px;
+        margin: auto;
+      }
 
 
       span {
@@ -293,6 +321,24 @@ h1 {
       padding: 0 30px;
       margin-bottom: 20px;
 
+      @media (max-width: 1000px) {
+        width: 100% !important;
+        height: 169px !important;
+        background-size: 100%;
+      }
+
+      @media (max-width: 570px) {
+        width: 100% !important;
+        height: 240px !important;
+        background-size: 100%;
+      }
+
+      @media (max-width: 400px) {
+        width: 100% !important;
+        height: 146px !important;
+        background-size: 100%;
+      }
+
       &-price {
         height: 50px;
         display: flex;
@@ -302,6 +348,15 @@ h1 {
         img {
           width: 64px !important;
           height: 64px !important;
+
+          @media (max-width: 1000px) {
+            width: 40px !important;
+            height: 40px !important;
+          }
+
+          @media (max-width: 400px) {
+            display: none;
+          }
         }
 
         span {
@@ -309,6 +364,10 @@ h1 {
           font-size: 20px;
           line-height: 14px;
           color: $yellow;
+
+          @media (max-width: 1000px) {
+            font-size: 14px;
+          }
         }
       }
 
@@ -317,6 +376,11 @@ h1 {
         font-size: 50px;
         line-height: 40px;
         margin-bottom: 37px;
+
+        @media (max-width: 1000px) {
+          font-size: 30px;
+          line-height: 30px;
+        }
       }
     }
   }
@@ -335,11 +399,11 @@ h1 {
 
   .level-price__item {
     &_current {
-      background: url("./assets/img/bg/current-level.png");
+      background: url("./assets/img/bg/current-level.png") no-repeat;
     }
 
     &_locked {
-      background: url("./assets/img/bg/price-item-stone.png");
+      background: url("./assets/img/bg/price-item-stone.png") no-repeat;
     }
   }
 }
@@ -364,6 +428,18 @@ h1 {
   background-size: 100%;
   padding: 80px 120px 66px 60px;
   height: 600px;
+  position: relative;
+
+  @media (max-width: 1400px) {
+    opacity: 0;
+  }
+
+  &__title {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+  }
 
   &__item {
     box-sizing: border-box;
@@ -371,6 +447,7 @@ h1 {
     position: relative;
     padding-top: 12px;
     padding-bottom: 12px;
+
     &:nth-child(3n):after {
       content: "";
       display: block;
@@ -385,3 +462,166 @@ h1 {
   }
 }
 
+.os-scrollbar-handle {
+  background-color: #E28205 !important;
+}
+
+.os-scrollbar-track {
+  background: #362F25 !important;
+}
+
+.popup {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(36, 32, 26, 0.8);
+  z-index: 100000;
+
+  &__close {
+    top: 0;
+    right: 0;
+    transform: translate(40%, -35%);
+  }
+
+  &__title {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  &__body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url('./assets/img/bg/board-reg.png');
+    background-size: 100%;
+    padding: 60px 60px 50px 60px;
+    text-align: center;
+    max-width: 740px;
+    min-height: 530px;
+    width: 100%;
+
+    h4 {
+      color: $yellow;
+      padding-top: 20px;
+      padding-bottom: 30px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .input-label {
+      text-align: left;
+      margin-bottom: 30px;
+
+      span {
+        margin-bottom: 10px;
+      }
+    }
+
+    .input {
+      position: relative;
+
+      input {
+        background-color: #24201A;
+        border-radius: 16px;
+        border: none;
+        padding: 15px;
+        color: $cameo !important;
+      }
+
+      .status {
+        right: 15px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .upline {
+      margin-left: 25px;
+      background: url("./assets/img/bg/bg-btn-light.png") no-repeat center;
+      background-size: 100% 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px 15px 15px;
+      color: $cameo !important;
+    }
+
+    .border-btn-small {
+      background: url("./assets/img/bg/border-btn-small.png");
+      background-size: 100% 100%;
+      color: #FFFCA7;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      padding: 20px 30px;
+      margin-top: 50px;
+    }
+  }
+}
+
+
+.progress-bar {
+  min-width: 570px;
+  background: url("./assets/img/bg/border-loading.png");
+
+  &__wrap {
+    background-image: url("./assets/img/bg/loading_bar_pattern.svg")
+  }
+}
+
+.my-progress {
+  min-height: 60px;
+  width: 100%;
+}
+
+.level-popup {
+
+  .popup__body {
+    background: url("./assets/img/bg/board-level-popup.png") no-repeat;
+    height: 700px;
+  }
+  .popup__title {
+    background: url("./assets/img/bg/level-popup-title.png") no-repeat;
+    background-size: 100% 100%;
+    max-width: 430px;
+    min-height: 100px;
+    width: 100%;
+    top: -30px;
+    padding: 22px 10px 12px 10px;
+
+    h5 {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 24px;
+      color: $cameo;
+    }
+  }
+
+  .popup__head {
+    background: url("./assets/img/bg/popup-level-table.png");
+    background-size: 100% 100%;
+    max-width:400px;
+    min-height: 170px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+    img {
+      transform: translateY(-50%);
+    }
+  }
+
+  .popup__cols {
+    min-width: 140px;
+  }
+}

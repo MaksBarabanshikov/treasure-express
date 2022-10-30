@@ -4,8 +4,8 @@ import Rus from "../../../assets/img/icons/rus.jpg";
 
 export const Presentations = () => {
     return (
-        <div className="col-4">
-            <div className="footer-section__presentations h-100 w-100">
+        <div className="col-12 col-xl-4">
+            <div className="footer-section__presentations h-100 w-100 p-5 mt-5 mt-xl-0">
                 <h1>Presentations</h1>
                 <div className="d-flex align-items-center justify-content-between mb-5">
                     <img src={Eng} alt="English"/>
