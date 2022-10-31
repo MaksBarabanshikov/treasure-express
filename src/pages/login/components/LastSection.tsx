@@ -1,4 +1,4 @@
-import {WhatIs} from "./WhatIs";
+import {WhatIs} from "../whatIs/WhatIs";
 import {LevelPrice} from "./LevelPrice";
 
 export function LastSection() {

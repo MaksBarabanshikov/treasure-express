@@ -1,7 +1,6 @@
-import coin from '../assets/img/icons/coin.svg'
-import currentBg from '../assets/img/bg/current-level.svg'
-import lockedBg from '../assets/img/bg/price-item-stone.png'
-import completeBg from '../assets/img/bg/completed-level.svg.svg'
+import coin from '../../assets/img/icons/coin.svg';
+import "./Level.scss";
+
 type Props = {
     level: string
     price: string

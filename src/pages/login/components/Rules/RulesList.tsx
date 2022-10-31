@@ -1,5 +1,6 @@
-import {RulesListData} from "../../../assets/data/rules";
+import {RulesListData} from "../../../../assets/data/rules";
 import {RulesItem} from "./RulesItem";
+import "./Rules.scss";
 
 
 export function RulesList() {

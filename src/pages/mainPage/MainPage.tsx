@@ -3,7 +3,7 @@ import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
 import { Transactions } from "../../components/transaction/Transactions";
 import { transactions } from "../../assets/data/transactions";
-import { InfoSection } from "../../components/InfoSection";
+import { InfoSection } from "../../components/infoSection/InfoSection";
 import { Container } from "../../components/layouts/Container";
 import { LevelPopup } from "../../components/popup/levePopup/LevelPopup";
 

@@ -1,21 +1,21 @@
-import Eng from "../../../assets/img/icons/eng.jpg";
-import download from "../../../assets/img/icons/download.png";
-import Rus from "../../../assets/img/icons/rus.jpg";
+import Eng from "../../../assets/img/icons/eng.svg";
+import download from "../../../assets/img/icons/download.svg";
+import Rus from "../../../assets/img/icons/rus.svg";
 
 export const Presentations = () => {
     return (
         <div className="col-12 col-xl-4">
-            <div className="footer-section__presentations h-100 w-100 p-5 mt-5 mt-xl-0">
+            <div className="info-section__presentations h-100 w-100 mt-5 mt-xl-0">
                 <h1>Presentations</h1>
                 <div className="d-flex align-items-center justify-content-between mb-5">
-                    <img src={Eng} alt="English"/>
+                    <img className="me-2" src={Eng} alt="English"/>
                     <span>Presentation on English</span>
                     <button className="btn">
                         <img src={download} alt="download"/>
                     </button>
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
-                    <img src={Rus} alt="English"/>
+                    <img className="me-2" src={Rus} alt="English"/>
                     <span>Presentation on Russian</span>
                     <button className="btn">
                         <img src={download} alt="download"/>

@@ -8,7 +8,7 @@ export const Header = () => {
         <header className='header'>
             <div className="container">
                 <div className="header__wrap d-flex justify-content-between align-items-center w-100">
-                    <Link to={"/"}>
+                    <Link className="logo" to={"/"}>
                         <img src={logo} alt=""/>
                     </Link>
                     <Registration />

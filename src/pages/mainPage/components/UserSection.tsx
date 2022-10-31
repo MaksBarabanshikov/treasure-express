@@ -7,7 +7,7 @@ import { Row } from "../../../components/layouts/Row";
 export const UserSection = () => {
 
   return (
-    <section style={{ marginTop: 250 }} className="user-section">
+    <section className="user-section mb-5">
       <Container>
         <Row>
           <User />

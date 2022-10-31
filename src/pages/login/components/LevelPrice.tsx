@@ -17,7 +17,7 @@ export const LevelPrice = ({ titleEl, col, className }: Props) => {
   if (titleEl) {
     return (
       <div className={divClass}>
-        <h1 className="mb-5">
+        <h1 className="mb-4">
           { titleEl }
         </h1>
         <LevelPriceList/>

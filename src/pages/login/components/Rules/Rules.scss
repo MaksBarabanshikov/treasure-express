@@ -1,0 +1,56 @@
+.rules {
+  background: url('../../../../assets/img/bg/board-rules.png') no-repeat;
+  background-size: 100% 100%;
+  padding: 57px 56px 16px 56px;
+  position: relative;
+
+  @media (max-width: 1200px) {
+    padding-bottom: 85px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 565px) {
+    padding: 45px 20px 16px 20px;
+  }
+
+
+  &__title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -22px);
+
+    @media (max-width: 565px) {
+      width: 300px;
+    }
+
+    @media (max-width: 420px) {
+      width: 250px;
+    }
+  }
+
+  li {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+    color: #DFC4A6;
+
+    @media (max-width: 1200px) {
+      line-height: 56px;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 767px) {
+      line-height: 40px;
+    }
+
+    @media (max-width: 565px) {
+      font-size: 12px;
+      padding-bottom: 12px;
+      line-height: 15px;
+    }
+  }
+}

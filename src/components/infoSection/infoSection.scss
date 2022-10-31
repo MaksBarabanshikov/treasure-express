@@ -1,0 +1,157 @@
+.info-section {
+
+  &__info {
+    background: url('../../assets/img/bg/board.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 50px 60px;
+
+    @media (max-width: 992px) {
+      background: url('../../assets/img/bg/board-present.png') no-repeat;
+      background-size: 100% 100%;
+    }
+
+    @media (max-width: 600px) {
+      padding: 50px 40px;
+    }
+
+    @media (max-width: 564px) {
+      padding:50px 25px
+    }
+
+    @media (max-width: 420px) {
+      padding:20px 25px
+    }
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    color: #DFC4A6;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 34px;
+    @media (max-width: 992px) {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 556px) {
+      font-size: 12px;
+    }
+  }
+
+  &__contract {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #7B6D59;
+
+    @media (max-width: 556px) {
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 420px) {
+      font-size: 25px;
+
+      .d-flex {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      opacity: 0.5;
+
+      @media (max-width: 992px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 556px) {
+        font-size: 10px;
+      }
+    }
+
+    button {
+      img {
+        @media (max-width: 564px) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+
+    div {
+      span {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  &__presentations {
+    background: url('../../assets/img/bg/board-present.png') no-repeat;
+    background-size: 100% 100%;
+    padding: 50px 60px;
+
+    @media (max-width: 600px) {
+      padding: 50px 40px;
+    }
+
+    @media (max-width: 564px) {
+      padding:50px 25px;
+
+      img.me-2 {
+      width: 30px;
+      height: 30px;
+    }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      padding:20px 25px
+    }
+
+  }
+
+  h1 {
+    margin-bottom: 20px !important;
+  }
+
+  .row {
+    p {
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 40px;
+      @media (max-width: 992px) {
+        font-size: 25px;
+        margin: 0;
+        line-height: 20px;
+      }
+    }
+
+    h4 {
+      @media (max-width: 420px) {
+
+      }
+    }
+
+    span {
+      color: #FAAF16;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 34px;
+
+      @media (max-width: 992px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
