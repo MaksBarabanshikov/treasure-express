@@ -32,7 +32,7 @@ export const LevelPopup = () => {
               <h1>0 of 3</h1>
             </div>
             <ProgressBar labelColor={"#000"} bgColor={'#FFD640'} className={'my-progress'} completed={90}/>
-            <Flex className="justify-content-center mb-5">
+            <Flex className="justify-content-between justify-content-lg-center mb-3 mb-lg-4">
               <div className="popup__cols me-5">
                 <span className="d-block mb-3">Partners bonus</span>
                 <div className="level-price__item-price">

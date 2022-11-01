@@ -11,7 +11,7 @@ export const TransactionItem = ({id,type, idUser, created_at, description }: ITr
         <Flex>
           <img className="me-3" src={type === "present" ? present : coin} alt="" />
           <IdUser id={idUser} />
-          <Flex className="ms-3">
+          <Flex className="transactions__text ms-3">
             {
               description.map((text, index) => {
                 if (index === 1) {

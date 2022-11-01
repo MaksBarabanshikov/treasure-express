@@ -4,8 +4,8 @@ import { Flex } from "../../../components/layouts/Flex";
 
 export const User = () => {
   return (
-    <div className="col-5">
-      <Flex>
+    <div className="col-12 col-sm-5 mb-3 mb-sm-0">
+      <Flex className="justify-content-center justify-content-sm-start">
         <img className="avatar me-4" src={avatar} alt="avatar" />
         <div className="user-section__info">
           <h4 className="text-shadow">ID 36651822</h4>

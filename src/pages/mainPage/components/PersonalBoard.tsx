@@ -5,7 +5,7 @@ import { LinkIcon } from "../../../components/Icons/LinkIcon";
 
 export const PersonalBoard = () => {
   return (
-    <div className="personal-board col-6">
+    <div className="personal-board col-8 col-sm-6 m-auto">
       <Flex>
         <span className="me-2">My personal link</span>
         <FaqIcon />

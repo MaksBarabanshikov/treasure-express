@@ -17,6 +17,7 @@ export const Transactions = ({ items }: Props) => {
       <img className="transactions__title" src={titleTab} alt="Transaction title" />
       <div className="transactions__scroll">
         <OverlayScrollbarsComponent
+          className="transactions__overlay"
           style={{
             height: 450
           }}
