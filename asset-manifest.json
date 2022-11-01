@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/treasure-express/static/css/main.9f8314c7.css",
-    "main.js": "/treasure-express/static/js/main.c8c02ab8.js",
+    "main.css": "/treasure-express/static/css/main.2bb79824.css",
+    "main.js": "/treasure-express/static/js/main.a28de96c.js",
     "static/js/787.04bb6996.chunk.js": "/treasure-express/static/js/787.04bb6996.chunk.js",
     "static/media/logo-big.svg": "/treasure-express/static/media/logo-big.eaa6ad2fb5cc3f900853b2d028bdd332.svg",
     "static/media/logo.svg": "/treasure-express/static/media/logo.c1a3a58f23e146bbf2784a9c05d5b7b0.svg",
@@ -21,21 +21,26 @@
     "static/media/board-title.png": "/treasure-express/static/media/board-title.86188076d3001a82d918.png",
     "static/media/x.svg": "/treasure-express/static/media/x.a56cb2e7c83ccef4ffeef20ad4414e47.svg",
     "static/media/price-item-brown.svg": "/treasure-express/static/media/price-item-brown.cb1bcd426b7692607cbc.svg",
+    "static/media/current-level.svg": "/treasure-express/static/media/current-level.6de9f723d5bd579877b2.svg",
+    "static/media/price-item-stone.svg": "/treasure-express/static/media/price-item-stone.b0aa9dd0e3b4113fa5ac.svg",
     "static/media/coin.svg": "/treasure-express/static/media/coin.c68edcbf30606de4060a3d06d0900240.svg",
     "static/media/faq.svg": "/treasure-express/static/media/faq.609db0c0124c17a52fe0d8d0ccca0209.svg",
     "static/media/coin-big.svg": "/treasure-express/static/media/coin-big.faf073903883f18207f28cace6c0284d.svg",
     "static/media/present.svg": "/treasure-express/static/media/present.2fa0c21810969f8c792e71c2c72d98bb.svg",
+    "static/media/eng.svg": "/treasure-express/static/media/eng.c20b025629089f9dc6f791516fcd7990.svg",
+    "static/media/rus.svg": "/treasure-express/static/media/rus.f1385838c8941344fe6de0fcb9a8d1c0.svg",
+    "static/media/download.svg": "/treasure-express/static/media/download.160968088b712f25208bd40945b5d135.svg",
     "static/media/loading_bar_pattern.svg": "/treasure-express/static/media/loading_bar_pattern.961248004ac49f133ec6.svg",
     "index.html": "/treasure-express/index.html",
     "static/media/link_icon.svg": "/treasure-express/static/media/link_icon.2c3ab5acb7982d20f59e42189349c9d4.svg",
     "static/media/share.svg": "/treasure-express/static/media/share.4565738c14cf8928717374186a7c564b.svg",
     "static/media/copy_icon.svg": "/treasure-express/static/media/copy_icon.248f6909f714796714eed342345cc808.svg",
-    "main.9f8314c7.css.map": "/treasure-express/static/css/main.9f8314c7.css.map",
-    "main.c8c02ab8.js.map": "/treasure-express/static/js/main.c8c02ab8.js.map",
+    "main.2bb79824.css.map": "/treasure-express/static/css/main.2bb79824.css.map",
+    "main.a28de96c.js.map": "/treasure-express/static/js/main.a28de96c.js.map",
     "787.04bb6996.chunk.js.map": "/treasure-express/static/js/787.04bb6996.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f8314c7.css",
-    "static/js/main.c8c02ab8.js"
+    "static/css/main.2bb79824.css",
+    "static/js/main.a28de96c.js"
   ]
 }
