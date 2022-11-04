@@ -4,6 +4,10 @@ import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
 
 export const Info = () => {
+
+    const smartContract = '0xb9B0A10C7cEeA5445aFfc23ddfB172Cb859eC412'
+    const handleCopyContract = () => navigator.clipboard.writeText(smartContract);
+
     return (
         <div className="col-12 col-xl-8">
             <div className="info-section__info w-100 h-100">
@@ -11,13 +15,17 @@ export const Info = () => {
                 <div className="info-section__contract d-flex justify-content-between">
                     <span>treasure Express smart-contract</span>
                     <div className="d-flex justify-content-between align-items-center">
-                        <span>0x982140...A3bf2e</span>
-                        <button className="btn py-0 px-2">
+                        <span>0xb9B0A1...9eC412</span>
+                        <button onClick={handleCopyContract} className="btn py-0 px-2">
                             <img src={copyIcon} alt="copy"/>
                         </button>
-                        <button className="btn py-0 px-2">
+                        <a href="https://testnet.bscscan.com/address/0xb9b0a10c7ceea5445affc23ddfb172cb859ec412#code"
+                           className="btn py-0 px-2"
+                           target="_blank"
+                           rel="noreferrer"
+                        >
                             <img src={linkIcon} alt="link"/>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div className="row">

@@ -15,9 +15,9 @@ export const TransactionItem = ({id,type, idUser, created_at, description }: ITr
             {
               description.map((text, index) => {
                 if (index === 1) {
-                  return (<span className="transaction__price me-1 text-shadow">{text}</span>)
+                  return (<span key={text} className="transaction__price me-1 text-shadow">{text}</span>)
                 }
-                return (<span className="me-1 text-shadow">{text}</span>)
+                return (<span key={text} className="me-1 text-shadow">{text}</span>)
               })
             }
           </Flex>
