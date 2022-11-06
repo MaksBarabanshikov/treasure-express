@@ -1,20 +1,37 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Flex } from "../../layouts/Flex";
 import title from "../../../assets/img/bg/reg_title.png";
 import { CloseIcon } from "../../Icons/closeIcon";
 import { Link } from "react-router-dom";
 import { Row } from "../../layouts/Row";
+import {useDispatch, useSelector} from "react-redux";
+import {disabledScroll, enabledScroll} from "../../../store/slices/ScrollSlice";
 
 export const Registration = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const dispatch = useDispatch()
+
   const handleChangeVisible = () => setIsVisible(!isVisible);
+
+  const { status } = useSelector((state: any) => state.wallet);
+
+  useEffect(() => {
+    if (status === 'fulfilled') {
+      setIsVisible(true);
+    }
+  },[status])
+
+  // @ts-ignore
+  useEffect(() => {
+    if (isVisible) {
+      dispatch(disabledScroll())
+    }
+    return () => dispatch(enabledScroll())
+  },[isVisible])
 
   return (
     <>
-      <button onClick={handleChangeVisible} className="green-btn btn">
-        Connect metamask
-      </button>
       {isVisible && <div className="popup popup-reg text-shadow">
         <div className="popup__body">
           <button onClick={handleChangeVisible} className="popup__close btn position-absolute">
