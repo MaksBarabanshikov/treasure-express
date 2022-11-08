@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/treasure-express/static/css/main.2bb79824.css",
-    "main.js": "/treasure-express/static/js/main.a28de96c.js",
+    "main.css": "/treasure-express/static/css/main.c68bc752.css",
+    "main.js": "/treasure-express/static/js/main.efa51400.js",
     "static/js/787.04bb6996.chunk.js": "/treasure-express/static/js/787.04bb6996.chunk.js",
     "static/media/logo-big.svg": "/treasure-express/static/media/logo-big.eaa6ad2fb5cc3f900853b2d028bdd332.svg",
     "static/media/logo.svg": "/treasure-express/static/media/logo.c1a3a58f23e146bbf2784a9c05d5b7b0.svg",
@@ -35,12 +35,12 @@
     "static/media/link_icon.svg": "/treasure-express/static/media/link_icon.2c3ab5acb7982d20f59e42189349c9d4.svg",
     "static/media/share.svg": "/treasure-express/static/media/share.4565738c14cf8928717374186a7c564b.svg",
     "static/media/copy_icon.svg": "/treasure-express/static/media/copy_icon.248f6909f714796714eed342345cc808.svg",
-    "main.2bb79824.css.map": "/treasure-express/static/css/main.2bb79824.css.map",
-    "main.a28de96c.js.map": "/treasure-express/static/js/main.a28de96c.js.map",
+    "main.c68bc752.css.map": "/treasure-express/static/css/main.c68bc752.css.map",
+    "main.efa51400.js.map": "/treasure-express/static/js/main.efa51400.js.map",
     "787.04bb6996.chunk.js.map": "/treasure-express/static/js/787.04bb6996.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2bb79824.css",
-    "static/js/main.a28de96c.js"
+    "static/css/main.c68bc752.css",
+    "static/js/main.efa51400.js"
   ]
 }
