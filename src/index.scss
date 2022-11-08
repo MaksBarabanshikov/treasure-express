@@ -321,7 +321,7 @@ h1 {
   margin: 100px 0;
   background: url("./assets/img/bg/board-trans.svg") no-repeat center;
   background-size: 100%;
-  padding: 80px 120px 66px 60px;
+  padding: 80px 45px 66px 60px;
   height: 600px;
   position: relative;
 
@@ -351,6 +351,7 @@ h1 {
     left: 50%;
     top: 0;
     transform: translate(-50%);
+    z-index: 1000;
 
     @media (max-width: 1400px) {
       top: 20px;

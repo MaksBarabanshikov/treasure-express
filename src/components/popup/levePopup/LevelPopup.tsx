@@ -1,13 +1,25 @@
 import { CloseIcon } from "../../Icons/closeIcon";
 import head from "../../../assets/img/bg/popup-level-head.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import coin from "../../../assets/img/icons/coin.svg";
 import { Flex } from "../../layouts/Flex";
+import { useDispatch } from "react-redux";
+import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 
 export const LevelPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const dispatch = useDispatch()
+
+  // @ts-ignore
+  useEffect(() => {
+    if (isVisible) {
+      dispatch(disabledScroll())
+    }
+    return () => dispatch(enabledScroll())
+  },[isVisible, dispatch])
 
   const handleChangeVisible = () => setIsVisible(!isVisible);
     return (
