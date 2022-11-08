@@ -1,11 +1,17 @@
 import logo from '../../assets/img/icons/logo.svg'
 import {Link, useLocation} from "react-router-dom";
 import { Registration } from "../popup/registration/Registration";
+import { connectMetamask } from "../../store/slices/RootSlice";
 import './header.scss';
 import coin from '../../assets/img/icons/coin.svg'
+import {useDispatch} from "react-redux";
 
 export const Header = () => {
     const location = useLocation();
+    const dispatch = useDispatch()
+
+    // @ts-ignore
+    const handleConnectMetamask = () => dispatch(connectMetamask())
 
     if (location.pathname === '/main') {
         return (
@@ -40,7 +46,9 @@ export const Header = () => {
                     <Link className="logo" to={"/"}>
                         <img src={logo} alt=""/>
                     </Link>
-                    <Registration />
+                    <button onClick={handleConnectMetamask} className="green-btn btn">
+                        Connect metamask
+                    </button>
                 </div>
             </div>
         </header>

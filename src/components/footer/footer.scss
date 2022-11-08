@@ -2,8 +2,17 @@ footer {
   background-color: #25221A;
   padding: 26px;
 
+  @media (max-width: 460px) {
+    padding: 26px 13px 26px 13px;
+    font-size: 14px !important;
+  }
+
   span {
     color: #DFC4A6;
     text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 460px) {
+      font-size: 11px !important;
+    }
   }
 }

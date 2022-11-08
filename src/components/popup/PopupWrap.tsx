@@ -1,6 +1,3 @@
-import { CloseIcon } from "../Icons/closeIcon";
-import { Flex } from "../layouts/Flex";
-import { Link } from "react-router-dom";
 import { ReactNode, useState } from "react";
 
 interface Props {
