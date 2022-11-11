@@ -1,7 +1,7 @@
 {
   "name": "treasure-express",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "https://maksbarabanshikov.github.io/treasure-express/",
   "private": true,
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.0.3",
