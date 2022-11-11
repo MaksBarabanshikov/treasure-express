@@ -1,8 +1,10 @@
-import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Web3 from "web3";
 
-interface IWalletSlice {
+export interface IWalletSlice {
     wallet: string | null;
+    walletShort: string | null;
+    balance: number | null;
     status: string | null;
     error: string | null;
 }
@@ -14,17 +16,28 @@ export const connectMetamask = createAsyncThunk<string, undefined, { rejectValue
         try {
             const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
             const accounts: any = await web3.eth.requestAccounts();
+            const wallet = accounts[0]
+            const balance = await (web3.eth.getBalance(wallet));
 
-            console.log(accounts[0])
+
+
+            const walletStart = wallet.slice(0, 5)
+            const walletDots = '...'
+            const walletEnd = wallet.substring( wallet.length - 2 , wallet.length)
+
+            const walletShort = walletStart.concat(walletDots, walletEnd)
 
             if (!accounts[0]) {
                 throw new Error('Error');
             }
 
-            const currentAccount = accounts[0];
-
-            return currentAccount;
+            return {
+                wallet,
+                walletShort,
+                balance
+            };
         } catch (error: any) {
+            alert(error.message)
             return rejectWithValue(error.message)
         }
     }
@@ -32,6 +45,8 @@ export const connectMetamask = createAsyncThunk<string, undefined, { rejectValue
 
 const initialState: IWalletSlice = {
     wallet: null,
+    walletShort: null,
+    balance: null,
     status: null,
     error: null,
 }
@@ -50,7 +65,9 @@ const walletSlice = createSlice({
                 state.error = action.payload
             })
             .addCase(connectMetamask.fulfilled, (state: any, action: any) => {
-                state.wallet = action.payload
+                state.wallet = action.payload.wallet
+                state.walletShort = action.payload.walletShort
+                state.balance = Number(action.payload.balance);
                 state.status = 'fulfilled'
             });
     }

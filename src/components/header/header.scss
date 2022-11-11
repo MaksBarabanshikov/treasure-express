@@ -15,8 +15,12 @@
       max-width: 200px;
     }
 
-    @media (max-width: 564px) {
+    @media (max-width: 576px) {
       max-width: 150px;
+    }
+
+    @media (max-width: 476px) {
+      max-width: 120px;
     }
 
     img {
@@ -27,25 +31,20 @@
   &__value {
     background-color: #25221A;
     border-radius: 10px;
-    height: 26px;
     position: relative;
-    padding-left: 40px;
-    margin-right: 40px;
+    padding: 5px 10px 5px 40px;
 
-    @media (max-width: 992px) {
-      margin-right: 10px;
-    }
-
-    @media (max-width: 486px) {
-      padding: 5px;
-      height: 35px;
-      text-align: center;
+    @media (max-width: 476px) {
+      padding-left: 5px;
+      display: flex;
+      align-items: center;
     }
 
     div {
-      @media (max-width: 486px) {
+      height: 100%;
+
+      @media (max-width: 476px) {
         display: flex;
-        flex-direction: column;
       }
       span {
         display: inline-block;
@@ -60,31 +59,22 @@
 
         &:last-child {
           border-right: 0;
-
-          @media (max-width: 486px) {
-            border-bottom: 0;
-          }
+          margin: 0;
+          padding: 0;
         }
 
         @media (max-width: 992px) {
+          font-size: 14px;
+        }
+
+
+        @media (max-width: 576px) {
           font-size: 12px;
         }
 
-        @media (max-width: 486px) {
+        @media (max-width: 476px) {
           font-size: 10px;
-        }
-
-        @media (max-width: 486px) {
-          padding: 0;
-          margin: 0;
-          border-right: 0;
-          border-bottom: 1px solid rgba(250,175,22, 0.1);
-          display: flex;
-          flex-direction: column;
-        }
-
-        @media (max-width: 380px) {
-          font-size: 7px;
+          padding-right: 5px;
         }
       }
     }
@@ -96,22 +86,27 @@
       transform: translateY(-50%);
 
       @media (max-width: 992px) {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
         left: 0;
       }
 
-      @media (max-width: 486px) {
+      @media (max-width: 576px) {
+        width: 30px;
+        height: 30px;
+      }
+
+      @media (max-width: 476px) {
         display: none;
       }
     }
   }
 
-  .upline {
-    @media (max-width: 992px) {
-      max-width: 80px;
-      max-height: 40px;
-      font-size: 12px;
-    }
-  }
+  //.upline {
+  //  @media (max-width: 992px) {
+  //    max-width: 80px;
+  //    max-height: 40px;
+  //    font-size: 12px;
+  //  }
+  //}
 }

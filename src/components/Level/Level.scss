@@ -12,8 +12,12 @@ $dark: #25221A;
   .level-price__list {
 
     & > div {
-      height: 276px;
+      height: 157px;
       @media (max-width: 1400px) {
+        height: 150px !important;
+      }
+
+      @media (max-width: 1199px) {
         height: 239px !important;
       }
 

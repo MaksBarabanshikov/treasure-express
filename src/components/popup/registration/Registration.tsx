@@ -1,40 +1,34 @@
-import {useEffect, useState} from "react";
+import { useEffect } from "react";
 import { Flex } from "../../layouts/Flex";
 import title from "../../../assets/img/bg/reg_title.png";
 import { CloseIcon } from "../../Icons/closeIcon";
 import { Link } from "react-router-dom";
 import { Row } from "../../layouts/Row";
-import {useDispatch, useSelector} from "react-redux";
-import {disabledScroll, enabledScroll} from "../../../store/slices/ScrollSlice";
+import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { hideRegModal } from "../../../store/slices/ModalSlice";
 
 export const Registration = () => {
-  const [isVisible, setIsVisible] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const { regIsVisible } = useAppSelector(state => state.modal)
 
-  const handleChangeVisible = () => setIsVisible(!isVisible);
-
-  const { status } = useSelector((state: any) => state.wallet);
-
-  useEffect(() => {
-    if (status === 'fulfilled') {
-      setIsVisible(true);
-    }
-  },[status])
-
+  const handleHideRegistration = () => {
+    dispatch(hideRegModal())
+  }
   // @ts-ignore
   useEffect(() => {
-    if (isVisible) {
-      dispatch(disabledScroll())
+    if (regIsVisible) {
+      dispatch(disabledScroll)
     }
-    return () => dispatch(enabledScroll())
-  },[isVisible])
+    return () => dispatch(enabledScroll)
+  },[regIsVisible])
 
   return (
     <>
-      {isVisible && <div className="popup popup-reg text-shadow">
+      {regIsVisible && <div className="popup popup-reg text-shadow">
         <div className="popup__body">
-          <button onClick={handleChangeVisible} className="popup__close btn position-absolute">
+          <button onClick={handleHideRegistration} className="popup__close btn position-absolute">
             <CloseIcon />
           </button>
           <div className="popup__title">
@@ -47,7 +41,7 @@ export const Registration = () => {
               <span>Upline address:</span>
               <Row>
                 <div className="input col-6">
-                  <input type="text" value={1526} />
+                  <input type="text" defaultValue={123123} />
                   <span className="status">1</span>
                 </div>
                 <button className="upline btn col-5">Approve upline</button>
@@ -58,7 +52,7 @@ export const Registration = () => {
             You take all the responsibility for you actions. By interacting with the smart contract, you agree to the
             rules of the game and understand that all blockchain transactions are irrevocable.
           </p>
-          <Link onClick={handleChangeVisible} to={"/main"} className="border-btn-small btn">
+          <Link onClick={handleHideRegistration} to={"/main"} className="border-btn-small btn">
             Confirm registration (0.025 BNB)
           </Link>
         </div>

@@ -1,19 +1,19 @@
 import logo from '../../assets/img/icons/logo.svg'
-import {Link, useLocation} from "react-router-dom";
-import { Registration } from "../popup/registration/Registration";
-import { connectMetamask } from "../../store/slices/RootSlice";
+import { Link } from "react-router-dom";
+import { connectMetamask } from "../../store/slices/WalletSlice";
 import './header.scss';
 import coin from '../../assets/img/icons/coin.svg'
-import {useDispatch} from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 
 export const Header = () => {
-    const location = useLocation();
-    const dispatch = useDispatch()
-
+    const dispatch = useAppDispatch()
+    const walletStatus = useAppSelector(state => state.wallet.status)
+    const walletShort = useAppSelector(state => state.wallet.walletShort)
+    const walletBalance = useAppSelector(state => state.wallet.balance)
     // @ts-ignore
     const handleConnectMetamask = () => dispatch(connectMetamask())
 
-    if (location.pathname === '/main') {
+    if (walletStatus === 'fulfilled') {
         return (
             <header className='header'>
                 <div className="container">
@@ -22,17 +22,17 @@ export const Header = () => {
                             <img src={logo} alt=""/>
                         </Link>
 
-                        <div className="header__info d-flex align-items-center flex-nowrap">
+                        <div className="header__info d-flex align-items-center justify-content-end flex-nowrap">
                             <div className="header__value">
                                 <img src={coin} alt="coin"/>
                                 <div>
-                                    <span>0,00485 BNB</span>
-                                    <span>0x1901...Eb</span>
+                                    <span>{walletBalance} BNB</span>
+                                    <span>{walletShort}</span>
                                 </div>
                             </div>
-                            <button style={{width: 150}} className="upline btn">
-                                Sign Out
-                            </button>
+                            {/*<button style={{width: 150}} className="upline btn">*/}
+                            {/*    Sign Out*/}
+                            {/*</button>*/}
                         </div>
                     </div>
                 </div>

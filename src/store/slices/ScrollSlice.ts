@@ -8,7 +8,6 @@ const initialState: IScrollSlice = {
     disabled: false
 }
 
-// @ts-ignore
 const scrollSlice = createSlice({
     name: 'scrollSlice',
     initialState,
