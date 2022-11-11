@@ -16,22 +16,6 @@ const MainSection = () => {
       dispatch(showRegModal())
     }
 
-    const currentBtn = () => {
-      if (wallet === null) {
-        return (
-          <button onClick={handleConnectMetamask} className="orange-btn btn mt-5 d-flex align-items-center">
-            Connect to Metamask
-          </button>
-        )
-      }
-      else {
-        return (
-            <button onClick={() => handleShowRegistration} className="orange-btn btn mt-5 d-flex align-items-center">
-              Register and Play
-            </button>
-          )
-      }
-    }
     return (
         <section className="main-section d-flex flex-column justify-content-center align-items-center">
             <img src={bigLogo} alt=""/>
