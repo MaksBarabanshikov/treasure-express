@@ -9,11 +9,11 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
 
 export const Registration = () => {
-
   const dispatch = useAppDispatch()
+  const { CONTRACT_LIST } = useAppSelector(state => state.web3)
   const { regIsVisible } = useAppSelector(state => state.modal)
 
-  const handleHideRegistration = () => {
+  const handleHideRegistration = async () => {
     dispatch(hideRegModal())
   }
   // @ts-ignore

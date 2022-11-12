@@ -1,9 +1,25 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
+import {useAppSelector} from "../../../hooks/hooks";
 
 export const Info = () => {
+    const [statistics, setStatistic] = useState(null)
+    const { CONTRACT_LIST } = useAppSelector(state => state.web3)
+
+    const getGlobalStatistic = async () => {
+        if (CONTRACT_LIST) {
+            const statistics = await CONTRACT_LIST.methods.getGlobalStatistic().call()
+            setStatistic(statistics)
+        }
+    }
+
+    useEffect(() => {
+        if ( CONTRACT_LIST !== null) {
+            getGlobalStatistic()
+        }
+    },[CONTRACT_LIST])
 
     const smartContract = '0xb9B0A10C7cEeA5445aFfc23ddfB172Cb859eC412'
     const handleCopyContract = () => navigator.clipboard.writeText(smartContract);
@@ -31,17 +47,17 @@ export const Info = () => {
                 <div className="row">
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Members Total</h4>
-                        <p>42</p>
+                        <p>{statistics ? statistics[0]: 42}</p>
                         <span>+14</span>
                     </div>
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Transactions</h4>
-                        <p>1080</p>
+                        <p>{statistics ? statistics[1]: 1080}</p>
                         <span>+582</span>
                     </div>
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Turnover, BNB</h4>
-                        <p>1708.2</p>
+                        <p>{statistics ? statistics[2]: 1708.2}</p>
                         <span>+743.4</span>
                     </div>
                 </div>

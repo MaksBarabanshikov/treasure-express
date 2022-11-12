@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import walletReducer from './slices/WalletSlice';
+import web3Slice from './slices/Web3Slice';
 import scrollSlice from "./slices/ScrollSlice";
 import ModalSlice from "./slices/ModalSlice";
 
 const store = configureStore({
     reducer: {
-        wallet: walletReducer,
+        web3: web3Slice,
         scroll: scrollSlice,
         modal: ModalSlice,
     }

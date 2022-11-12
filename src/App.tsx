@@ -7,9 +7,27 @@ import "overlayscrollbars/css/OverlayScrollbars.css"
 import {OverlayScrollbarsComponent} from "overlayscrollbars-react";
 import {Registration} from "./components/popup/registration/Registration";
 import {useSelector} from "react-redux";
+import {CONTRACT_ABI, CONTRACT_ADDRESS} from "./contract/config";
+import Web3 from "web3";
+import {useAppDispatch, useAppSelector} from "./hooks/hooks";
+import {getListABI} from "./store/slices/Web3Slice";
 
 function App() {
     const { disabled } = useSelector((state: any) => state.scroll)
+    const dispatch = useAppDispatch()
+
+
+    const connectContract = async () => {
+        const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
+        const list = await new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+
+        dispatch(getListABI(list));
+    }
+
+    useEffect(() => {
+        connectContract()
+    })
+
     const [height, setHeight] = useState({
         height: '100vh',
         zIndex: 100

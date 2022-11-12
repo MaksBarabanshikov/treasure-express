@@ -1,19 +1,17 @@
-import logo from '../../assets/img/icons/logo.svg'
+import { connectWeb3 } from "../../store/slices/Web3Slice";
 import { Link } from "react-router-dom";
-import { connectMetamask } from "../../store/slices/WalletSlice";
-import './header.scss';
-import coin from '../../assets/img/icons/coin.svg'
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import logo from '../../assets/img/icons/logo.svg'
+import coin from '../../assets/img/icons/coin.svg'
+import './header.scss';
 
 export const Header = () => {
     const dispatch = useAppDispatch()
-    const walletStatus = useAppSelector(state => state.wallet.status)
-    const walletShort = useAppSelector(state => state.wallet.walletShort)
-    const walletBalance = useAppSelector(state => state.wallet.balance)
+    const { status, walletShort, check } = useAppSelector(state => state.web3)
     // @ts-ignore
-    const handleConnectMetamask = () => dispatch(connectMetamask())
+    const handleConnectMetamask = () => dispatch(connectWeb3())
 
-    if (walletStatus === 'fulfilled') {
+    if (status === 'fulfilled') {
         return (
             <header className='header'>
                 <div className="container">
@@ -26,7 +24,7 @@ export const Header = () => {
                             <div className="header__value">
                                 <img src={coin} alt="coin"/>
                                 <div>
-                                    <span>{walletBalance} BNB</span>
+                                    <span>{check} BNB</span>
                                     <span>{walletShort}</span>
                                 </div>
                             </div>
