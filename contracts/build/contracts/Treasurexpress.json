@@ -44938,12 +44938,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x2AC1018928762162c44c1b97D1048874a1476375",
-      "transactionHash": "0x5031cbb128d48ddbdbb093be0b5cc1495cce979905a495b6c347dcdc6bf9a6a6"
+      "address": "0xED6006C16E003545c163fD69aF5eaCb08667CDe8",
+      "transactionHash": "0x2c78a4784b2e70618bc444d32bdeefa2bf38d5ef7a24640faeeb0bba54f7ab2c"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-12T13:56:00.576Z",
+  "updatedAt": "2022-11-13T10:34:01.375Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

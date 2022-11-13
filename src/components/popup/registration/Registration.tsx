@@ -10,11 +10,16 @@ import { hideRegModal } from "../../../store/slices/ModalSlice";
 
 export const Registration = () => {
   const dispatch = useAppDispatch()
-  const { CONTRACT_LIST } = useAppSelector(state => state.web3)
+  const { CONTRACT_LIST,wallet } = useAppSelector(state => state.web3)
   const { regIsVisible } = useAppSelector(state => state.modal)
 
   const handleHideRegistration = async () => {
-    dispatch(hideRegModal())
+    await dispatch(hideRegModal())
+  }
+
+  const registerUser = async () => {
+    await CONTRACT_LIST!.methods.register().send({from: wallet});
+    await handleHideRegistration()
   }
   // @ts-ignore
   useEffect(() => {
@@ -52,7 +57,7 @@ export const Registration = () => {
             You take all the responsibility for you actions. By interacting with the smart contract, you agree to the
             rules of the game and understand that all blockchain transactions are irrevocable.
           </p>
-          <Link onClick={handleHideRegistration} to={"/main"} className="border-btn-small btn">
+          <Link onClick={registerUser} to={"/main"} className="border-btn-small btn">
             Confirm registration (0.025 BNB)
           </Link>
         </div>

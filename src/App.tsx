@@ -20,7 +20,7 @@ function App() {
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
         const list = await new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-
+        console.log(list);
         dispatch(getListABI(list));
     }
 
