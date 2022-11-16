@@ -71,6 +71,8 @@ export const connectWeb3 = createAsyncThunk<string, undefined, { rejectValue: st
 
             const wallet = accounts[0]
 
+            localStorage.setItem("accounts", JSON.stringify(wallet))
+
             const check = Number(await (web3.eth.getBalance(wallet)))
 
             const walletShort = getShortWallet(wallet)
@@ -82,7 +84,6 @@ export const connectWeb3 = createAsyncThunk<string, undefined, { rejectValue: st
             } as IWeb3Res;
 
         } catch (error: any) {
-            alert(error.message)
             return rejectWithValue(error.message)
         }
     }

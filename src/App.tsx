@@ -9,8 +9,8 @@ import {Registration} from "./components/popup/registration/Registration";
 import {useSelector} from "react-redux";
 import { CONTRACT_ABI, CONTRACT_ADDRESS,TREASURE_EXPRESS_ADDRESS,TREASURE_EXPRESS_ABI } from "./contract/config";
 import Web3 from "web3";
-import {useAppDispatch, useAppSelector} from "./hooks/hooks";
-import {getListABI} from "./store/slices/Web3Slice";
+import {useAppDispatch} from "./hooks/hooks";
+import { connectWeb3, getListABI } from "./store/slices/Web3Slice";
 
 function App() {
     const { disabled } = useSelector((state: any) => state.scroll)
@@ -19,12 +19,19 @@ function App() {
 
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider);
-        const list = await new web3.eth.Contract(TREASURE_EXPRESS_ABI, TREASURE_EXPRESS_ADDRESS);
+        const list = await new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
         dispatch(getListABI(list));
     }
 
     useEffect(() => {
         connectContract()
+
+        const accounts: any = JSON.parse(localStorage.getItem("accounts") || '{}');
+
+        if (accounts !== null) {
+            dispatch(connectWeb3())
+        }
+        window.ethereum.on('accountsChanged', () => dispatch(connectWeb3()))
     })
 
     const [height, setHeight] = useState({

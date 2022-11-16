@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {BNB} from "../../../helper";
 
 import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
@@ -23,6 +24,7 @@ export const Info = () => {
 
     const smartContract = '0xb9B0A10C7cEeA5445aFfc23ddfB172Cb859eC412'
     const handleCopyContract = () => navigator.clipboard.writeText(smartContract);
+
 
     return (
         <div className="col-12 col-xl-8">
@@ -57,7 +59,7 @@ export const Info = () => {
                     </div>
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Turnover, BNB</h4>
-                        <p>{statistics ? statistics[2]: 1708.2}</p>
+                        <p>{statistics ? BNB(statistics[2]): 1708.2}</p>
                         <span>+743.4</span>
                     </div>
                 </div>

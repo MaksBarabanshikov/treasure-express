@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import { Flex } from "../../layouts/Flex";
 import title from "../../../assets/img/bg/reg_title.png";
 import { CloseIcon } from "../../Icons/closeIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Row } from "../../layouts/Row";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
+import { WEI } from "../../../helper";
 
 export const Registration = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const { CONTRACT_LIST,wallet } = useAppSelector(state => state.web3)
   const { regIsVisible } = useAppSelector(state => state.modal)
 
@@ -18,7 +20,14 @@ export const Registration = () => {
   }
 
   const registerUser = async () => {
-    await CONTRACT_LIST!.methods.register().send({from: wallet});
+    await CONTRACT_LIST!.methods.register().send({
+      from: wallet,
+      value: WEI('0.025'),
+      gasPrice: "20000000000"
+      }).on('receipt', (res) => {
+      }
+    );
+    navigate('/main');
     await handleHideRegistration()
   }
   // @ts-ignore
@@ -57,9 +66,9 @@ export const Registration = () => {
             You take all the responsibility for you actions. By interacting with the smart contract, you agree to the
             rules of the game and understand that all blockchain transactions are irrevocable.
           </p>
-          <Link onClick={registerUser} to={"/main"} className="border-btn-small btn">
+          <button onClick={registerUser} className="border-btn-small btn">
             Confirm registration (0.025 BNB)
-          </Link>
+          </button>
         </div>
       </div>
       }
