@@ -20,9 +20,12 @@ export const Registration = () => {
   }
 
   const registerUser = async () => {
+
+    const currentPrice = await CONTRACT_LIST?.methods.registrationPrice().call()
+
     await CONTRACT_LIST!.methods.register().send({
       from: wallet,
-      value: WEI('0.025'),
+      value: currentPrice,
       gasPrice: currentGasLimit,
       }).on('receipt', (res) => {
       }
