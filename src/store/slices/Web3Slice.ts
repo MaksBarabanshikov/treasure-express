@@ -7,6 +7,7 @@ export interface IWeb3Res {
     wallet: string;
     walletShort: string;
     check: number;
+    currentGasLimit: string;
 }
 
 export interface IWeb3Slice {
@@ -16,6 +17,7 @@ export interface IWeb3Slice {
     status: string | null;
     error: string | null;
     CONTRACT_LIST: Contract | null;
+    currentGasLimit: string;
 }
 
 const initialState: IWeb3Slice = {
@@ -25,6 +27,7 @@ const initialState: IWeb3Slice = {
     status: null,
     error: null,
     CONTRACT_LIST: null,
+    currentGasLimit: ''
 }
 
 // @ts-ignore
@@ -47,11 +50,11 @@ const web3Slice = createSlice({
             })
             .addCase(connectWeb3.fulfilled, (state: Draft<IWeb3Slice>, action: any) => {
                 const payload: IWeb3Res = action.payload;
-                const { wallet, walletShort, check } = payload;
+                const { wallet, walletShort, check, currentGasLimit } = payload;
                 state.wallet = wallet
                 state.walletShort = walletShort
                 state.check = check;
-
+                state.currentGasLimit = currentGasLimit
                 state.status = 'fulfilled'
             });
     }
@@ -62,7 +65,7 @@ export const connectWeb3 = createAsyncThunk<string, undefined, { rejectValue: st
     // @ts-ignore
     async function (_, { rejectWithValue }) {
         try {
-            const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
+            const web3 = new Web3(Web3.givenProvider);
             const accounts: string[] = await web3.eth.requestAccounts();
 
             if (!accounts[0]) {
@@ -75,12 +78,15 @@ export const connectWeb3 = createAsyncThunk<string, undefined, { rejectValue: st
 
             const check = Number(await (web3.eth.getBalance(wallet)))
 
+            const currentGasLimit = await web3.eth.getGasPrice()
+
             const walletShort = getShortWallet(wallet)
 
             return {
                 wallet,
                 walletShort,
                 check,
+                currentGasLimit
             } as IWeb3Res;
 
         } catch (error: any) {

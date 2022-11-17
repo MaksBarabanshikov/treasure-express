@@ -12,7 +12,7 @@ import { WEI } from "../../../helper";
 export const Registration = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const { CONTRACT_LIST,wallet } = useAppSelector(state => state.web3)
+  const { CONTRACT_LIST,wallet, currentGasLimit } = useAppSelector(state => state.web3)
   const { regIsVisible } = useAppSelector(state => state.modal)
 
   const handleHideRegistration = async () => {
@@ -23,7 +23,7 @@ export const Registration = () => {
     await CONTRACT_LIST!.methods.register().send({
       from: wallet,
       value: WEI('0.025'),
-      gasPrice: "20000000000"
+      gasPrice: currentGasLimit,
       }).on('receipt', (res) => {
       }
     );
