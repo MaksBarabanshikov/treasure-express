@@ -19,7 +19,7 @@ function App() {
 
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider);
-        const list = await new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+        const list = await new web3.eth.Contract(TREASURE_EXPRESS_ABI, TREASURE_EXPRESS_ADDRESS);
         dispatch(getListABI(list));
     }
 
@@ -28,7 +28,7 @@ function App() {
 
         const accounts: any = JSON.parse(localStorage.getItem("accounts") || '{}');
 
-        if (accounts !== null) {
+        if (typeof accounts !== 'object') {
             dispatch(connectWeb3())
         }
         window.ethereum.on('accountsChanged', () => dispatch(connectWeb3()))
@@ -38,6 +38,7 @@ function App() {
         height: '100vh',
         zIndex: 100
     });
+
     useEffect(() => {
         if (disabled) {
             setHeight({

@@ -8,14 +8,14 @@ import { BNB } from "../../helper";
 import { useEffect, useState } from "react";
 
 export const Header = () => {
-    const [currentCheck, setCurrentCheck] = useState('null')
+    const [currentCheck, setCurrentCheck] = useState<string | null>(null)
     const dispatch = useAppDispatch()
     const { status, walletShort, check } = useAppSelector(state => state.web3)
     const handleConnectMetamask = () => dispatch(connectWeb3())
 
 
     useEffect(() => {
-        if (check) {
+        if (check !== null) {
             setCurrentCheck(BNB(check.toString()))
         }
     }, [check]);
@@ -27,9 +27,9 @@ export const Header = () => {
             <header className='header'>
                 <div className="container">
                     <div className="header__wrap d-flex justify-content-between align-items-center w-100">
-                        <Link className="logo" to={"/"}>
+                        <div className="logo">
                             <img src={logo} alt=""/>
-                        </Link>
+                        </div>
 
                         <div className="header__info d-flex align-items-center justify-content-end flex-nowrap">
                             <div className="header__value">

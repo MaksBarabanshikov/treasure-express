@@ -8,6 +8,6 @@ export const getShortWallet = (wallet: string): string => {
     return walletStart.concat(walletDots, walletEnd)
 }
 
-export const BNB = (wei) => web3.utils.fromWei(wei, 'ether').concat('0');
+export const BNB = (wei) => web3.utils.fromWei(wei, 'ether');
 
 export const WEI = (bnb) => web3.utils.toWei(bnb)

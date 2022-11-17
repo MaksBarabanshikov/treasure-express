@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Flex } from "../../layouts/Flex";
 import title from "../../../assets/img/bg/reg_title.png";
 import { CloseIcon } from "../../Icons/closeIcon";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Row } from "../../layouts/Row";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
@@ -27,15 +27,15 @@ export const Registration = () => {
       }).on('receipt', (res) => {
       }
     );
-    navigate('/main');
     await handleHideRegistration()
+    navigate('/main')
   }
   // @ts-ignore
   useEffect(() => {
     if (regIsVisible) {
-      dispatch(disabledScroll)
+      dispatch(disabledScroll())
     }
-    return () => dispatch(enabledScroll)
+    return () => dispatch(enabledScroll())
   },[regIsVisible])
 
   return (
