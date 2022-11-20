@@ -1,18 +1,23 @@
 import avatar from "../../../assets/img/icons/avatar.svg";
 import link from "../../../assets/img/icons/link_icon.svg";
 import { Flex } from "../../../components/layouts/Flex";
-import { useAppSelector } from "../../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { useState } from "react";
+import { setRefId } from "../../../store/slices/ReferSlice";
 
 export const User = () => {
-
-  const [user, setUser] = useState(null)
-
+  const dispatch = useAppDispatch()
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
+  const { user } = useAppSelector(state => state.user)
+  const { refId } = useAppSelector(state => state.refer)
 
-  const getUser: any = async () => await CONTRACT_LIST?.methods.getUser(wallet).call();
+  const getReferrer = async () => await CONTRACT_LIST?.methods.getReferrer(wallet).call();
 
-  getUser().then((user) => setUser(user))
+  const getReferrerId = async () => await CONTRACT_LIST?.methods.getReferrerId(wallet).call()
+
+  getReferrer().then((user) => console.log(user))
+
+  getReferrerId().then((id) => dispatch(setRefId(id)))
 
   if (user) {
     return (
@@ -20,7 +25,7 @@ export const User = () => {
         <Flex className="justify-content-center justify-content-sm-start">
           <img className="avatar me-4" src={avatar} alt="avatar" />
           <div className="user-section__info">
-            <h4 className="text-shadow">ID {user[1]}</h4>
+            <h4 className="text-shadow">ID {user[0]}</h4>
             <Flex>
               <span className="text-shadow">{ user[3] }</span>
               <button className="btn link-btn p-1">
@@ -32,7 +37,7 @@ export const User = () => {
                 Invited 05.04.2022 by
               </span>
               <div className="user-id">
-                ID 31224822
+                ID { refId }
               </div>
             </div>
           </div>

@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import web3Slice from './slices/Web3Slice';
 import scrollSlice from "./slices/ScrollSlice";
 import ModalSlice from "./slices/ModalSlice";
+import referSlice from "./slices/ReferSlice";
+import userSlice from "./slices/UserSlice";
 
 
 
@@ -10,6 +12,8 @@ const store = configureStore({
         web3: web3Slice,
         scroll: scrollSlice,
         modal: ModalSlice,
+        refer: referSlice,
+        user: userSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false

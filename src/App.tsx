@@ -31,7 +31,7 @@ function App() {
         if (typeof accounts !== 'object') {
             dispatch(connectWeb3())
         }
-        window.ethereum.on('accountsChanged', () => dispatch(connectWeb3()))
+        window.ethereum?.on('accountsChanged', () => dispatch(connectWeb3()))
     })
 
     const [height, setHeight] = useState({
