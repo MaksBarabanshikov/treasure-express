@@ -24,7 +24,7 @@ function App() {
     }
 
     useEffect(() => {
-        connectContract()
+        connectContract().then(r => console.log(r))
 
         const accounts: any = JSON.parse(localStorage.getItem("accounts") || '{}');
 

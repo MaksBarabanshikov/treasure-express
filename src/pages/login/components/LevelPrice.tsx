@@ -1,5 +1,6 @@
 import {LevelPriceList} from "./LevelPriceList";
 import { useAppSelector } from "../../../hooks/hooks";
+import { UserLevels } from "../../mainPage/components/UserLevels";
 
 interface Props {
   col: number,
@@ -36,7 +37,7 @@ export const LevelPrice = ({ titleEl, col, className }: Props) => {
   }
   return (
     <div className={mainPageClass}>
-      <LevelPriceList/>
+      <UserLevels />
     </div>
   )
 };
