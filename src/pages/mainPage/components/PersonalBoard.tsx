@@ -16,10 +16,8 @@ export const PersonalBoard = () => {
 
   const refLink = wallet !== null ? baseUrl + '/?' + shortWallet : baseUrl;
 
+  const handleCopy = () => navigator.clipboard.writeText(refLinkFull)
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(refLinkFull)
-  }
   return (
     <div className="personal-board col-8 col-sm-6 m-auto">
       <Flex>
@@ -27,11 +25,10 @@ export const PersonalBoard = () => {
         <FaqIcon />
       </Flex>
       <Flex>
-        <a className="personal-link" href="#">{refLink}</a>
+        <a onClick={handleCopy} className="personal-link">{refLink}</a>
         <div className="mx-1 mx-md-3" onClick={handleCopy}>
           <CopyIcon/>
         </div>
-        <LinkIcon />
       </Flex>
     </div>
   );

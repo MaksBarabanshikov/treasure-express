@@ -16,7 +16,16 @@ export const Header = () => {
 
     useEffect(() => {
         if (check !== null) {
-            setCurrentCheck(BNB(check.toString()))
+            const BNBString = BNB(check.toString())
+
+            if (BNBString.indexOf('.')) {
+                const result = BNB(check.toString()).split(".")
+                const endResult = result[1].slice(0, 2)
+                setCurrentCheck(result[0].concat('.', endResult))
+            }
+            else {
+                setCurrentCheck(BNBString)
+            }
         }
     }, [check]);
 

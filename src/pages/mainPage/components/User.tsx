@@ -2,8 +2,9 @@ import avatar from "../../../assets/img/icons/avatar.svg";
 import link from "../../../assets/img/icons/link_icon.svg";
 import { Flex } from "../../../components/layouts/Flex";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setRefId } from "../../../store/slices/ReferSlice";
+import { formatDate, getShortWallet } from "../../../helper";
 
 export const User = () => {
   const dispatch = useAppDispatch()
@@ -15,9 +16,16 @@ export const User = () => {
 
   const getReferrerId = async () => await CONTRACT_LIST?.methods.getReferrerId(wallet).call()
 
-  getReferrer().then((user) => console.log(user))
+  useEffect(() => {
+    getReferrer()
+    getReferrerId().then((id) => dispatch(setRefId(id)))
+  }, []);
 
-  getReferrerId().then((id) => dispatch(setRefId(id)))
+  useEffect(() => {
+    if (user) {
+      console.log();
+    }
+  }, [user]);
 
   if (user) {
     return (
@@ -27,14 +35,14 @@ export const User = () => {
           <div className="user-section__info">
             <h4 className="text-shadow">ID {user[0]}</h4>
             <Flex>
-              <span className="text-shadow">{ user[3] }</span>
+              <span className="text-shadow">{ getShortWallet(user[3]) }</span>
               <button className="btn link-btn p-1">
                 <img className="ms-3" src={link} alt="link" />
               </button>
             </Flex>
             <div>
               <span className="invited me-3 text-shadow">
-                Invited 05.04.2022 by
+                Invited { formatDate(new Date(Number(user[1]))) } by
               </span>
               <div className="user-id">
                 ID { refId }

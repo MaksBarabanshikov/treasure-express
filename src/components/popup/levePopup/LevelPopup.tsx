@@ -5,29 +5,31 @@ import { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import coin from "../../../assets/img/icons/coin.svg";
 import { Flex } from "../../layouts/Flex";
-import { useDispatch } from "react-redux";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
 
 export const LevelPopup = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const dispatch = useDispatch()
+  const { paymentsIsVisible } = useAppSelector(state => state.modal)
+  const dispatch = useAppDispatch()
 
   // @ts-ignore
   useEffect(() => {
-    if (isVisible) {
+    if (paymentsIsVisible) {
       dispatch(disabledScroll())
     }
     return () => dispatch(enabledScroll())
-  },[isVisible, dispatch])
+  },[paymentsIsVisible, dispatch])
 
-  const handleChangeVisible = () => setIsVisible(!isVisible);
+  const handleChangeVisible = () => {
+    if (paymentsIsVisible) {
+    return dispatch(hidePaymentsModal())
+    }
+    return dispatch(showPaymentsModal())
+  };
     return (
       <>
-        <button onClick={handleChangeVisible} className="green-btn btn">
-          Level Popup
-        </button>
-        {isVisible && <div className="popup text-shadow level-popup">
+        {paymentsIsVisible && <div className="popup text-shadow level-popup">
           <div className="popup__body">
             <button onClick={handleChangeVisible} className="popup__close btn position-absolute">
               <CloseIcon />

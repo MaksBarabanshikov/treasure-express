@@ -1,18 +1,18 @@
 import coin from '../../assets/img/icons/coin.svg';
 import "./Level.scss";
-import {WEI} from "../../helper";
 
 type Props = {
     level: string
     price: string
-    type: string,
+    type: string
     buyLevel?: any
+    toggleModal?: any
     currentLevel?: string
     currentPrice?: string
     currentType?: boolean
 };
 
-export const LevelItem = ({level, type, price, buyLevel, currentPrice, currentType, currentLevel}: Props) => {
+export const LevelItem = ({ level, type, price, buyLevel, currentPrice, currentType, currentLevel, toggleModal}: Props) => {
 
     const getCurrentLevel = () => {
         if (currentType !== undefined) {
@@ -31,7 +31,8 @@ export const LevelItem = ({level, type, price, buyLevel, currentPrice, currentTy
 
     const handleBuyLevel = () => {
         if (buyLevel && currentPrice) {
-            return buyLevel(currentLevel, currentPrice)
+            return toggleModal()
+            // return buyLevel(currentLevel, currentPrice)
         }
         return null
     }

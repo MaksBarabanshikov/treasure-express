@@ -1,6 +1,7 @@
 import {LevelPriceList} from "../../login/components/LevelPriceList";
-import {useAppSelector} from "../../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import {useEffect, useState} from "react";
+import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
 
 export const UserLevels = () => {
   const [userLevels, setUserLevels] = useState(null)
@@ -8,10 +9,12 @@ export const UserLevels = () => {
   const [resBuyLevel, setResBuyLevel] = useState(null)
 
   const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3)
+  const { paymentsIsVisible } = useAppSelector(state => state.modal)
+  const dispatch = useAppDispatch()
+
 
   const getUserLevels = async () => await CONTRACT_LIST?.methods.getUserLevels(wallet).call()
   const getLevelPrices = async () => await CONTRACT_LIST?.methods.getLevelPrices().call()
-
 
   useEffect(() => {
     getUserLevels().then((levels) => setUserLevels(levels))
@@ -28,5 +31,22 @@ export const UserLevels = () => {
     gasPrice: "22000000000",
   })
 
-  return (levelsPrice && userLevels) && <LevelPriceList userLevels={userLevels} prices={levelsPrice} buyLevel={handleBuyLevel}/>
+  const toggleLevelModal = () => {
+    if (paymentsIsVisible) {
+      return dispatch(hidePaymentsModal())
+    }
+    return dispatch(showPaymentsModal())
+  }
+
+
+
+  return (
+    (levelsPrice && userLevels) &&
+    <LevelPriceList
+      userLevels={userLevels}
+      prices={levelsPrice}
+      buyLevel={handleBuyLevel}
+      toggleModal={toggleLevelModal}
+    />
+  )
 }

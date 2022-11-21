@@ -17,8 +17,6 @@ export const MainPage = () => {
 
   const getUser: any = async () => await CONTRACT_LIST?.methods.getUser(wallet).call();
 
-
-
   getUser().then((user) => dispatch(setUser(user)))
 
   return (

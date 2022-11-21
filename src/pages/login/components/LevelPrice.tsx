@@ -1,5 +1,4 @@
 import {LevelPriceList} from "./LevelPriceList";
-import { useAppSelector } from "../../../hooks/hooks";
 import { UserLevels } from "../../mainPage/components/UserLevels";
 
 interface Props {
@@ -15,14 +14,6 @@ export const LevelPrice = ({ titleEl, col, className }: Props) => {
   const divClass = `level-price ${colClass} ${className} text-center`
 
   const mainPageClass = `level-price ${colClass} ${className} text-center main-page`
-
-  const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
-
-  const getUserLevels = async () => await CONTRACT_LIST?.methods.getUserLevels(wallet).call();
-
-  if (wallet) {
-    getUserLevels().then((res) => console.log(res))
-  }
 
 
   if (titleEl) {
