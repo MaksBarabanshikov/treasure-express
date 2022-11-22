@@ -29,7 +29,9 @@ export const Registration = () => {
         from: wallet,
         value: currentPrice,
         gasPrice: currentGasLimit,
-      }).on('receipt', (res) => {});
+      }).on('receipt', (res) => {
+        console.log(res);
+      });
     }
 
     if (userId !== null) {

@@ -17,29 +17,25 @@ const Protected = ({ isReg, children }) => {
 
 export const RouteList = () => {
   const [isReg, setIsReg] = useState(false)
-  const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
+  const { status, CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 
   const getIsUserRegistered = async (address: string) => {
-    if (CONTRACT_LIST && address) {
-      const isUserRegistered = await CONTRACT_LIST.methods.isUserRegistered(address).call()
+      const isUserRegistered = await CONTRACT_LIST!.methods.isUserRegistered(address).call()
       setIsReg(isUserRegistered)
-    }
   }
+
   useEffect(() => {
-    if (wallet) {
+    if (wallet && status === 'fulfilled' && CONTRACT_LIST) {
       getIsUserRegistered(wallet)
     }
-  }, [wallet]);
+  }, [wallet, status, CONTRACT_LIST]);
 
 
   return (
-      <Routes>
-        <Route path="/" element={<LoginPage/>}/>
-        <Route path="/main" element={
-          <Protected isReg={isReg}>
-            <MainPage />
-          </Protected>
-        }/>
-      </Routes>
+     status === "fulfilled" ? <Routes>
+       {
+         isReg ? <Route path="/main" element={<MainPage/>}/> : <Route path="/" element={<LoginPage/>}/>
+       }
+      </Routes> : <p>Загрузка...</p>
   )
 }

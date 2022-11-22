@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
 
 export const LevelPopup = () => {
-  const { paymentsIsVisible } = useAppSelector(state => state.modal)
+  const { paymentsIsVisible, paymentsLevel, paymentsPrice } = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
 
   // @ts-ignore
@@ -22,10 +22,7 @@ export const LevelPopup = () => {
   },[paymentsIsVisible, dispatch])
 
   const handleChangeVisible = () => {
-    if (paymentsIsVisible) {
     return dispatch(hidePaymentsModal())
-    }
-    return dispatch(showPaymentsModal())
   };
     return (
       <>
@@ -35,10 +32,10 @@ export const LevelPopup = () => {
               <CloseIcon />
             </button>
             <div className="popup__title">
-              <h5>LVL 1</h5>
+              <h5>LVL { paymentsLevel + 1 }</h5>
               <div style={{maxWidth: 100, margin: '10px auto', height: 20, fontSize: 10}} className="level-price__item-price">
                 <img style={{width: 27, height: 27}} src={coin} alt="coin"/>
-                <span>0.05 BNB</span>
+                <span>{ paymentsPrice }</span>
               </div>
             </div>
             <div className="popup__head mt-5">

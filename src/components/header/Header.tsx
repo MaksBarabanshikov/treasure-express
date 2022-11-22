@@ -18,7 +18,8 @@ export const Header = () => {
         if (check !== null) {
             const BNBString = BNB(check.toString())
 
-            if (BNBString.indexOf('.')) {
+
+            if (BNBString.indexOf('.') !== -1) {
                 const result = BNB(check.toString()).split(".")
                 const endResult = result[1].slice(0, 2)
                 setCurrentCheck(result[0].concat('.', endResult))

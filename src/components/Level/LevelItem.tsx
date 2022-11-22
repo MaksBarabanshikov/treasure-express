@@ -31,7 +31,7 @@ export const LevelItem = ({ level, type, price, buyLevel, currentPrice, currentT
 
     const handleBuyLevel = () => {
         if (buyLevel && currentPrice) {
-            return toggleModal()
+            return toggleModal(currentLevel, price)
             // return buyLevel(currentLevel, currentPrice)
         }
         return null

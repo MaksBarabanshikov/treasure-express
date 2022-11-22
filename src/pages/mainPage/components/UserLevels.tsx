@@ -31,11 +31,11 @@ export const UserLevels = () => {
     gasPrice: "22000000000",
   })
 
-  const toggleLevelModal = () => {
+  const toggleLevelModal = (level, price) => {
     if (paymentsIsVisible) {
       return dispatch(hidePaymentsModal())
     }
-    return dispatch(showPaymentsModal())
+    return dispatch(showPaymentsModal({ level, price }))
   }
 
 

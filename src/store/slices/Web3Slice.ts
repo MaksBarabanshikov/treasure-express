@@ -20,8 +20,12 @@ export interface IWeb3Slice {
     currentGasLimit: string;
 }
 
+const initialWallet = localStorage.getItem("accounts")
+  ? JSON.parse(localStorage.getItem("accounts")!)
+  : null
+
 const initialState: IWeb3Slice = {
-    wallet: null,
+    wallet: initialWallet,
     walletShort: null,
     check: null,
     status: null,
