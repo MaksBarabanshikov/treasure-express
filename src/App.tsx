@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Suspense} from "react";
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
 import {RouteList} from "./components/Route";
@@ -68,7 +68,9 @@ function App() {
                     <Registration/>
                     <Header/>
                     <main style={{minHeight: '100vh'}}>
-                        <RouteList />
+                        <Suspense fallback={"loading"}>
+                            <RouteList />
+                        </Suspense>
                     </main>
                     <Footer/>
                 </OverlayScrollbarsComponent>
