@@ -50,6 +50,7 @@ const web3Slice = createSlice({
             })
             .addCase(connectWeb3.rejected, (state: Draft<IWeb3Slice>, action: any) => {
                 state.status = 'rejected'
+                state.wallet = null
                 state.error = action.payload
             })
             .addCase(connectWeb3.fulfilled, (state: Draft<IWeb3Slice>, action: any) => {

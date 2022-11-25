@@ -15,6 +15,7 @@ export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal }: Pr
         const currentLevels = userLevels[1].slice(1, userLevels[1].length)
         const currentPrices = prices.slice(1, prices.length)
         const currentType = userLevels[0].slice(1, userLevels[0].length)
+        const payoutCounter = userLevels[3].slice(1, userLevels[3].length)
 
         return <div className="level-price__list row">
 
@@ -29,6 +30,7 @@ export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal }: Pr
                       currentType={currentType[index]}
                       currentPrice={currentPrices[index]}
                       currentLevel={index}
+                      payoutCounter={Number(payoutCounter[index])}
                       buyLevel={buyLevel}
                       toggleModal={toggleModal}
                     />

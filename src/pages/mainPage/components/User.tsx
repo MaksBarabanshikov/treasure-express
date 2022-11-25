@@ -23,7 +23,6 @@ export const User = () => {
 
   useEffect(() => {
     if (user) {
-      console.log();
     }
   }, [user]);
 
@@ -42,7 +41,7 @@ export const User = () => {
             </Flex>
             <div>
               <span className="invited me-3 text-shadow">
-                Invited { formatDate(new Date(Number(user[1]))) } by
+                Invited { formatDate(new Date(Number(user[1]) * 1000)) } by
               </span>
               <div className="user-id">
                 ID { refId }

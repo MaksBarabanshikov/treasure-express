@@ -13,6 +13,7 @@ export const BNB = (wei) => web3.utils.fromWei(wei, 'ether');
 export const WEI = (bnb) => web3.utils.toWei(bnb)
 
 export const formatDate = (date) => {
+    console.log(date);
     return [
         padTo2Digits(date.getDate()),
         padTo2Digits(date.getMonth() + 1),
