@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Suspense} from "react";
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
 import {RouteList} from "./components/Route";
@@ -13,7 +13,14 @@ import {useAppDispatch} from "./hooks/hooks";
 import { connectWeb3, getListABI } from "./store/slices/Web3Slice";
 
 function App() {
+    const initialHeight = {
+        height: '100vh',
+        zIndex: 100
+    }
+
+    const [height, setHeight] = useState({ ...initialHeight });
     const { disabled } = useSelector((state: any) => state.scroll)
+
     const dispatch = useAppDispatch()
 
 
@@ -24,20 +31,19 @@ function App() {
     }
 
     useEffect(() => {
-        connectContract()
+        connectContract().then()
 
-        const accounts: any = JSON.parse(localStorage.getItem("accounts") || '{}');
+        const accounts: any = localStorage.getItem("accounts")
+          ? JSON.parse(localStorage.getItem("accounts")!)
+          : null
 
-        if (typeof accounts !== 'object') {
+        if (accounts !== null) {
             dispatch(connectWeb3())
         }
-        window.ethereum.on('accountsChanged', () => dispatch(connectWeb3()))
-    })
 
-    const [height, setHeight] = useState({
-        height: '100vh',
-        zIndex: 100
-    });
+        window.ethereum?.on('accountsChanged', () => dispatch(connectWeb3()))
+    },[])
+
 
     useEffect(() => {
         if (disabled) {
@@ -61,7 +67,11 @@ function App() {
                 >
                     <Registration/>
                     <Header/>
-                    <RouteList/>
+                    <main style={{minHeight: '100vh'}}>
+                        <Suspense fallback={"loading"}>
+                            <RouteList />
+                        </Suspense>
+                    </main>
                     <Footer/>
                 </OverlayScrollbarsComponent>
             </div>

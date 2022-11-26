@@ -7,12 +7,13 @@ import { Row } from "../../layouts/Row";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
-import { WEI } from "../../../helper";
+import { current } from "@reduxjs/toolkit";
 
 export const Registration = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { CONTRACT_LIST,wallet, currentGasLimit } = useAppSelector(state => state.web3)
+  const { userId } = useAppSelector(state => state.refer)
   const { regIsVisible } = useAppSelector(state => state.modal)
 
   const handleHideRegistration = async () => {
@@ -23,13 +24,24 @@ export const Registration = () => {
 
     const currentPrice = await CONTRACT_LIST?.methods.registrationPrice().call()
 
-    await CONTRACT_LIST!.methods.register().send({
-      from: wallet,
-      value: currentPrice,
-      gasPrice: currentGasLimit,
+    if (userId === null) {
+      await CONTRACT_LIST!.methods.register().send({
+        from: wallet,
+        value: currentPrice,
+        gasPrice: currentGasLimit,
       }).on('receipt', (res) => {
-      }
-    );
+        console.log(res);
+      });
+    }
+
+    if (userId !== null) {
+      console.log(userId);
+      await CONTRACT_LIST!.methods.registerWithReferrer(userId).send({
+        from: wallet,
+        value: currentPrice,
+        gasPrice: currentGasLimit
+      })
+    }
     await handleHideRegistration()
     navigate('/main')
   }

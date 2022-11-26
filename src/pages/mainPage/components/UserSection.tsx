@@ -10,8 +10,8 @@ export const UserSection = () => {
     <section className="user-section mb-5">
       <Container>
         <Row>
-          <User />
-          <PersonalBoard />
+          <User/>
+          <PersonalBoard/>
         </Row>
       </Container>
     </section>

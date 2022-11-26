@@ -1,5 +1,5 @@
 import { connectWeb3 } from "../../store/slices/Web3Slice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import logo from '../../assets/img/icons/logo.svg'
 import coin from '../../assets/img/icons/coin.svg'
@@ -10,17 +10,32 @@ import { useEffect, useState } from "react";
 export const Header = () => {
     const [currentCheck, setCurrentCheck] = useState<string | null>(null)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { status, walletShort, check } = useAppSelector(state => state.web3)
     const handleConnectMetamask = () => dispatch(connectWeb3())
 
 
     useEffect(() => {
         if (check !== null) {
-            setCurrentCheck(BNB(check.toString()))
+            const BNBString = BNB(check.toString())
+
+
+            if (BNBString.indexOf('.') !== -1) {
+                const result = BNB(check.toString()).split(".")
+                const endResult = result[1].slice(0, 2)
+                setCurrentCheck(result[0].concat('.', endResult))
+            }
+            else {
+                setCurrentCheck(BNBString)
+            }
         }
     }, [check]);
 
-
+    useEffect(() => {
+        if (status === 'rejected') {
+            navigate('/')
+        }
+    },[status])
 
     if (status === 'fulfilled') {
         return (

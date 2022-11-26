@@ -5,27 +5,36 @@ import {BNB} from "../../../helper";
 interface Props {
     userLevels?: any[];
     prices?: any[];
-    buyLevel?: any
+    buyLevel?: any,
+    toggleModal?: any,
 }
 
-export const LevelPriceList = ({ userLevels, prices, buyLevel }: Props) => {
+export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal }: Props) => {
 
     if (userLevels && prices) {
-       return <div className="level-price__list row">
+        const currentLevels = userLevels[1].slice(1, userLevels[1].length)
+        const currentPrices = prices.slice(1, prices.length)
+        const currentType = userLevels[0].slice(1, userLevels[0].length)
+        const payoutCounter = userLevels[3].slice(1, userLevels[3].length)
+
+        return <div className="level-price__list row">
+
             {
-                userLevels[1].map((item, index) =>
-                    (
-                        <LevelItem
-                            key={Math.random()}
-                            level={"LVL " + String(index + 1)}
-                            price={BNB(prices[index]).concat(" BNB")}
-                            type={'complete'}
-                            currentType={userLevels[0][index]}
-                            currentPrice={prices[index]}
-                            currentLevel={index}
-                            buyLevel={buyLevel}
-                        />
-                    )
+                currentLevels.map((item, index) =>
+                  (
+                    <LevelItem
+                      key={Math.random()}
+                      level={"LVL " + String(index + 1)}
+                      price={BNB(currentPrices[index]).concat(" BNB")}
+                      type={'complete'}
+                      currentType={currentType[index]}
+                      currentPrice={currentPrices[index]}
+                      currentLevel={index}
+                      payoutCounter={Number(payoutCounter[index])}
+                      buyLevel={buyLevel}
+                      toggleModal={toggleModal}
+                    />
+                  )
                 )
             }
         </div>

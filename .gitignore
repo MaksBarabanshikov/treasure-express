@@ -6,6 +6,7 @@
 .pnp.js
 /.idea
 /.env
+./contracts/build
 
 # testing
 /coverage

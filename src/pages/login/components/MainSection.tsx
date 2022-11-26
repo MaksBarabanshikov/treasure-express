@@ -6,8 +6,8 @@ import { showRegModal } from "../../../store/slices/ModalSlice";
 import {useNavigate} from "react-router-dom";
 
 const MainSection = () => {
-    const [isReg, setIsReg] = useState(null);
-    const { CONTRACT_LIST } = useAppSelector(state => state.web3)
+    const [isReg, setIsReg] = useState<null | boolean>(null);
+    const { CONTRACT_LIST, status } = useAppSelector(state => state.web3)
     const wallet = useAppSelector(state => state.web3.wallet)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -46,7 +46,7 @@ const MainSection = () => {
             <button onClick={handleConnectMetamask} className="orange-btn btn mt-5 d-flex align-items-center">
                 Connect to Metamask
             </button>
-              : isReg === false?
+              : !isReg?
             <button onClick={handleShowRegistration} className="orange-btn btn mt-5 d-flex align-items-center">
               Register and Play
             </button> : ''

@@ -5,38 +5,37 @@ import { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import coin from "../../../assets/img/icons/coin.svg";
 import { Flex } from "../../layouts/Flex";
-import { useDispatch } from "react-redux";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
 
 export const LevelPopup = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const dispatch = useDispatch()
+  const { paymentsIsVisible, paymentsLevel, paymentsPrice } = useAppSelector(state => state.modal)
+  const dispatch = useAppDispatch()
 
   // @ts-ignore
   useEffect(() => {
-    if (isVisible) {
+    if (paymentsIsVisible) {
       dispatch(disabledScroll())
     }
     return () => dispatch(enabledScroll())
-  },[isVisible, dispatch])
+  },[paymentsIsVisible, dispatch])
 
-  const handleChangeVisible = () => setIsVisible(!isVisible);
+  const handleChangeVisible = () => {
+    return dispatch(hidePaymentsModal())
+  };
     return (
       <>
-        <button onClick={handleChangeVisible} className="green-btn btn">
-          Level Popup
-        </button>
-        {isVisible && <div className="popup text-shadow level-popup">
+        {paymentsIsVisible && <div className="popup text-shadow level-popup">
           <div className="popup__body">
             <button onClick={handleChangeVisible} className="popup__close btn position-absolute">
               <CloseIcon />
             </button>
             <div className="popup__title">
-              <h5>LVL 1</h5>
+              <h5>LVL { paymentsLevel + 1 }</h5>
               <div style={{maxWidth: 100, margin: '10px auto', height: 20, fontSize: 10}} className="level-price__item-price">
                 <img style={{width: 27, height: 27}} src={coin} alt="coin"/>
-                <span>0.05 BNB</span>
+                <span>{ paymentsPrice }</span>
               </div>
             </div>
             <div className="popup__head mt-5">

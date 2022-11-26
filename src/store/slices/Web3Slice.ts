@@ -20,8 +20,12 @@ export interface IWeb3Slice {
     currentGasLimit: string;
 }
 
+const initialWallet = localStorage.getItem("accounts")
+  ? JSON.parse(localStorage.getItem("accounts")!)
+  : null
+
 const initialState: IWeb3Slice = {
-    wallet: null,
+    wallet: initialWallet,
     walletShort: null,
     check: null,
     status: null,
@@ -46,6 +50,7 @@ const web3Slice = createSlice({
             })
             .addCase(connectWeb3.rejected, (state: Draft<IWeb3Slice>, action: any) => {
                 state.status = 'rejected'
+                state.wallet = null
                 state.error = action.payload
             })
             .addCase(connectWeb3.fulfilled, (state: Draft<IWeb3Slice>, action: any) => {

@@ -1,5 +1,5 @@
 import {LevelPriceList} from "./LevelPriceList";
-import {UserLevels} from "../../mainPage/components/UserLevels";
+import { UserLevels } from "../../mainPage/components/UserLevels";
 
 interface Props {
   col: number,
@@ -14,6 +14,7 @@ export const LevelPrice = ({ titleEl, col, className }: Props) => {
   const divClass = `level-price ${colClass} ${className} text-center`
 
   const mainPageClass = `level-price ${colClass} ${className} text-center main-page`
+
 
   if (titleEl) {
     return (

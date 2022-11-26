@@ -2,10 +2,16 @@ import {createSlice} from "@reduxjs/toolkit";
 
 interface IModalSlice {
   regIsVisible: boolean;
+  paymentsIsVisible: boolean;
+  paymentsLevel: number
+  paymentsPrice: number
 }
 
 const initialState: IModalSlice = {
-  regIsVisible: false
+  regIsVisible: false,
+  paymentsIsVisible: false,
+  paymentsLevel: 0,
+  paymentsPrice: 0,
 }
 
 const modalSlice = createSlice({
@@ -16,12 +22,20 @@ const modalSlice = createSlice({
       state.regIsVisible = true
     },
     hideRegModal(state) {
-      console.log(state.regIsVisible);
       state.regIsVisible = false
-    }
+    },
+    showPaymentsModal(state, action) {
+      state.paymentsIsVisible = true
+      state.paymentsLevel = action.payload.level
+      state.paymentsPrice = action.payload.price
+    },
+    hidePaymentsModal(state) {
+      state.paymentsIsVisible = false
+    },
+
   }
 })
 
-export const { hideRegModal, showRegModal } = modalSlice.actions
+export const { hideRegModal, showRegModal, showPaymentsModal, hidePaymentsModal } = modalSlice.actions
 
 export default modalSlice.reducer;
