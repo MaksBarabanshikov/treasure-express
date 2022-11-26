@@ -8,6 +8,7 @@ import { formatDate, getShortWallet } from "../../../helper";
 
 export const User = () => {
   const dispatch = useAppDispatch()
+
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
   const { user } = useAppSelector(state => state.user)
   const { refId } = useAppSelector(state => state.refer)
@@ -23,6 +24,7 @@ export const User = () => {
 
   useEffect(() => {
     if (user) {
+      console.log(user);
     }
   }, [user]);
 

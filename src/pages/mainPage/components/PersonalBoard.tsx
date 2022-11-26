@@ -8,7 +8,11 @@ export const PersonalBoard = () => {
 
   const { wallet } = useAppSelector(state => state.web3)
 
-  const baseUrl = 'http://localhost:3000'
+  const local = 'http://localhost:3000'
+
+  const prod = 'http://treasure.express'
+
+  const baseUrl = local
 
   const shortWallet = wallet?.slice(0, 5).concat('...')
 

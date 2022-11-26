@@ -1,13 +1,15 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
 import { Transactions } from "../../components/transaction/Transactions";
 import { transactions } from "../../assets/data/transactions";
 import { InfoSection } from "../../components/infoSection/InfoSection";
 import { Container } from "../../components/layouts/Container";
-import { LevelPopup } from "../../components/popup/levePopup/LevelPopup";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setUser } from "../../store/slices/UserSlice";
+
+const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
+    .then(({ LevelPopup }) => ({ default: LevelPopup })))
 
 export const MainPage = () => {
 
@@ -22,7 +24,9 @@ export const MainPage = () => {
   return (
     <div className="wrap">
       <UserSection/>
-      <LevelPopup/>
+        <Suspense fallback={''}>
+            <LevelPopup/>
+        </Suspense>
       <Container>
         <LevelPrice col={10} className={"main-level"}/>
         <InfoSection />

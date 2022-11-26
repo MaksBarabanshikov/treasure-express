@@ -7,7 +7,6 @@ import { Row } from "../../layouts/Row";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
-import { current } from "@reduxjs/toolkit";
 
 export const Registration = () => {
   const dispatch = useAppDispatch()
@@ -22,12 +21,12 @@ export const Registration = () => {
 
   const registerUser = async () => {
 
-    const currentPrice = await CONTRACT_LIST?.methods.registrationPrice().call()
+    const registrationPrice = await CONTRACT_LIST?.methods.registrationPrice().call()
 
     if (userId === null) {
       await CONTRACT_LIST!.methods.register().send({
         from: wallet,
-        value: currentPrice,
+        value: registrationPrice,
         gasPrice: currentGasLimit,
       }).on('receipt', (res) => {
         console.log(res);
@@ -35,10 +34,9 @@ export const Registration = () => {
     }
 
     if (userId !== null) {
-      console.log(userId);
       await CONTRACT_LIST!.methods.registerWithReferrer(userId).send({
         from: wallet,
-        value: currentPrice,
+        value: registrationPrice,
         gasPrice: currentGasLimit
       })
     }

@@ -44938,27 +44938,12 @@
     "5777": {
       "events": {},
       "links": {},
-<<<<<<< HEAD
-      "address": "0x3bB0836Bbe2AE48666FA1466028bd875A4D3d7AF",
-      "transactionHash": "0x7eaad0b250d8586d9c0d075011a8600a76710028c8898ba63a81744b59bbbb4e"
-=======
-      "address": "0xDaA1d78b01E7312d8072CC7aB3F83D448D50E6A4",
-      "transactionHash": "0x08d472da0bf0cb7226863ad266a37c5ee398dae7fae4de45e46478e96b0922f9"
->>>>>>> 61e9a11bfc075c384bd728bc1b3a8860b845bbb5
-    },
-    "5788": {
-      "events": {},
-      "links": {},
-      "address": "0x584CE7952D85F61407d55F77575ed1064585aB3D",
-      "transactionHash": "0x9601c1f5bd005ec5bfc85186c4c5268301f27b1769a3f5055dcb5576cd78dcfc"
+      "address": "0x631FD6b3c2890Fd700887A96aF7f6b8625343AdB",
+      "transactionHash": "0x67f933dcbdc1c0852f921b9deb50f19eeb9982a0e0b21bd9614c2cf1310188a4"
     }
   },
   "schemaVersion": "3.4.10",
-<<<<<<< HEAD
-  "updatedAt": "2022-11-19T14:56:35.939Z",
-=======
-  "updatedAt": "2022-11-22T15:21:15.808Z",
->>>>>>> 61e9a11bfc075c384bd728bc1b3a8860b845bbb5
+  "updatedAt": "2022-11-26T10:09:37.450Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

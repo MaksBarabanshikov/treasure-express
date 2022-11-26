@@ -15,6 +15,8 @@ export const UserLevels = () => {
 
   const getUserLevels = async () => await CONTRACT_LIST?.methods.getUserLevels(wallet).call()
   const getLevelPrices = async () => await CONTRACT_LIST?.methods.getLevelPrices().call()
+  const getPlaceInQueue = async (level) => await CONTRACT_LIST?.methods.getPlaceInQueue(wallet, level).call()
+
 
   useEffect(() => {
     getUserLevels().then((levels) => setUserLevels(levels))
@@ -28,14 +30,14 @@ export const UserLevels = () => {
   const buyLevel = async (level, price) => await CONTRACT_LIST?.methods.buyLevel(level).send({
     from: wallet,
     value: price,
-    gasPrice: "22000000000",
+    gasPrice: currentGasLimit,
   })
 
-  const toggleLevelModal = (level, price) => {
+  const toggleLevelModal = (level, price, limit, counter) => {
     if (paymentsIsVisible) {
       return dispatch(hidePaymentsModal())
     }
-    return dispatch(showPaymentsModal({ level, price }))
+    return dispatch(showPaymentsModal({ level, price, limit, counter }))
   }
 
 
@@ -47,6 +49,7 @@ export const UserLevels = () => {
       prices={levelsPrice}
       buyLevel={handleBuyLevel}
       toggleModal={toggleLevelModal}
+      getPlaceInQueue={getPlaceInQueue}
     />
   )
 }

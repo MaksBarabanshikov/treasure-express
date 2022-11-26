@@ -5,12 +5,13 @@ import {RouteList} from "./components/Route";
 import {BrowserRouter} from "react-router-dom";
 import "overlayscrollbars/css/OverlayScrollbars.css"
 import {OverlayScrollbarsComponent} from "overlayscrollbars-react";
-import {Registration} from "./components/popup/registration/Registration";
 import {useSelector} from "react-redux";
 import { CONTRACT_ABI, CONTRACT_ADDRESS,TREASURE_EXPRESS_ADDRESS,TREASURE_EXPRESS_ABI } from "./contract/config";
 import Web3 from "web3";
 import {useAppDispatch} from "./hooks/hooks";
 import { connectWeb3, getListABI } from "./store/slices/Web3Slice";
+
+const Registration = React.lazy(() => import('./components/popup/registration/Registration').then(({ Registration }) => ({ default: Registration })))
 
 function App() {
     const initialHeight = {
@@ -65,14 +66,17 @@ function App() {
                 <OverlayScrollbarsComponent
                     style={height}
                 >
-                    <Registration/>
                     <Header/>
-                    <main style={{minHeight: '100vh'}}>
+                    <main>
                         <Suspense fallback={"loading"}>
                             <RouteList />
                         </Suspense>
+                        <Suspense fallback={''}>
+                            <Registration/>
+                        </Suspense>
                     </main>
                     <Footer/>
+
                 </OverlayScrollbarsComponent>
             </div>
         </BrowserRouter>

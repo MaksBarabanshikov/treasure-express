@@ -5,6 +5,8 @@ interface IModalSlice {
   paymentsIsVisible: boolean;
   paymentsLevel: number
   paymentsPrice: number
+  limit: number
+  counter: number
 }
 
 const initialState: IModalSlice = {
@@ -12,6 +14,8 @@ const initialState: IModalSlice = {
   paymentsIsVisible: false,
   paymentsLevel: 0,
   paymentsPrice: 0,
+  limit: 0,
+  counter: 3,
 }
 
 const modalSlice = createSlice({
@@ -28,6 +32,8 @@ const modalSlice = createSlice({
       state.paymentsIsVisible = true
       state.paymentsLevel = action.payload.level
       state.paymentsPrice = action.payload.price
+      state.limit = action.payload.limit
+      state.counter = action.payload.counter
     },
     hidePaymentsModal(state) {
       state.paymentsIsVisible = false

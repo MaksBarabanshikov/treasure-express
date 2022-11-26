@@ -7,23 +7,77 @@ import coin from "../../../assets/img/icons/coin.svg";
 import { Flex } from "../../layouts/Flex";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
+import { hidePaymentsModal } from "../../../store/slices/ModalSlice";
+import {BNB} from "../../../helper";
 
 export const LevelPopup = () => {
-  const { paymentsIsVisible, paymentsLevel, paymentsPrice } = useAppSelector(state => state.modal)
+  const [queue, setQueue] = useState(0)
+  const [price, setPrice] = useState(null)
+  const { paymentsIsVisible, paymentsLevel, paymentsPrice, limit, counter } = useAppSelector(state => state.modal)
+  const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3)
   const dispatch = useAppDispatch()
+
+
+  const getPlaceInQueue = async () => await CONTRACT_LIST?.methods.getPlaceInQueue(wallet, paymentsLevel + 1).call()
+
+    useEffect(() => {
+      const queueAsync = async () => {
+        await getPlaceInQueue().then((res) => {
+          console.log(res);
+          setQueue(Math.round((res[0] / res[1]) * 100));
+        })
+      }
+
+      const interval = setInterval(queueAsync, 1000);
+
+      if (!paymentsIsVisible) {
+        clearInterval(interval)
+      }
+
+      if (queue === 100) {
+        clearInterval(interval)
+      }
+      return () => clearInterval(interval)
+    },[paymentsIsVisible, queue])
 
   // @ts-ignore
   useEffect(() => {
     if (paymentsIsVisible) {
       dispatch(disabledScroll())
+      currentPriceLevel()
     }
-    return () => dispatch(enabledScroll())
+    return () => {
+      return dispatch(enabledScroll());
+    }
   },[paymentsIsVisible, dispatch])
 
   const handleChangeVisible = () => {
     return dispatch(hidePaymentsModal())
   };
+
+  const currentPriceLevel = async () => {
+    await CONTRACT_LIST?.methods.levelPrice(paymentsLevel + 1).call().then((res) => {
+      setPrice(res)
+    })
+  }
+
+  const buyLevel = async () => await CONTRACT_LIST?.methods.buyLevel(paymentsLevel + 1).send({
+    from: wallet,
+    value: price,
+    gasPrice: currentGasLimit,
+  }).on('receipt', (res) => {
+    handleChangeVisible()
+  })
+
+  const handleClick = async () => {
+    if (Number(limit) === Number(counter)) {
+      return await buyLevel()
+    }
+    else {
+      return handleChangeVisible()
+    }
+  }
+
     return (
       <>
         {paymentsIsVisible && <div className="popup text-shadow level-popup">
@@ -40,28 +94,28 @@ export const LevelPopup = () => {
             </div>
             <div className="popup__head mt-5">
               <img src={head} alt="" />
-              <h1>0 of 3</h1>
+              <h1>{counter} of {limit}</h1>
             </div>
-            <ProgressBar labelColor={"#000"} bgColor={'#FFD640'} className={'my-progress'} completed={90}/>
+            {Number(limit) !== Number(counter) && <ProgressBar labelColor={"#000"} bgColor={'#FFD640'} className={'my-progress'} completed={queue}/>}
             <Flex className="justify-content-between justify-content-lg-center mb-3 mb-lg-4">
               <div className="popup__cols me-5">
                 <span className="d-block mb-3">Partners bonus</span>
                 <div className="level-price__item-price">
                   <img style={{width: 48, height: 48}} src={coin} alt="coin"/>
-                  <span>0.05 BNB</span>
+                  <span>{price ? BNB(price): 0} BNB</span>
                 </div>
               </div>
               <div className="popup__cols">
                 <span className="d-block mb-3">Level profit</span>
                 <div className="level-price__item-price">
                   <img style={{width: 48, height: 48}} src={coin} alt="coin"/>
-                  <span>0.05 BNB</span>
+                  <span>{ price ? BNB(price) : 0 } BNB</span>
                 </div>
               </div>
             </Flex>
-            <Link onClick={handleChangeVisible} to={'/main'} className="green-btn btn d-inline-flex align-items-center justify-content-center rounded">
+            <a onClick={handleClick} className="green-btn btn d-inline-flex align-items-center justify-content-center rounded">
               Reinvest
-            </Link>
+            </a>
           </div>
         </div>
         }

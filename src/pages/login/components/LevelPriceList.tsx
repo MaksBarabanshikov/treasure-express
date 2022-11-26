@@ -7,15 +7,17 @@ interface Props {
     prices?: any[];
     buyLevel?: any,
     toggleModal?: any,
+    getPlaceInQueue?:any
 }
 
-export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal }: Props) => {
+export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal, getPlaceInQueue }: Props) => {
 
     if (userLevels && prices) {
         const currentLevels = userLevels[1].slice(1, userLevels[1].length)
         const currentPrices = prices.slice(1, prices.length)
         const currentType = userLevels[0].slice(1, userLevels[0].length)
-        const payoutCounter = userLevels[3].slice(1, userLevels[3].length)
+        const payoutCounter = userLevels[1].slice(1, userLevels[1].length)
+        const payoutsLimit = userLevels[2].slice(1, userLevels[2].length)
 
         return <div className="level-price__list row">
 
@@ -31,7 +33,9 @@ export const LevelPriceList = ({ userLevels, prices, buyLevel, toggleModal }: Pr
                       currentPrice={currentPrices[index]}
                       currentLevel={index}
                       payoutCounter={Number(payoutCounter[index])}
+                      payoutsLimit={payoutsLimit[index]}
                       buyLevel={buyLevel}
+                      getPlaceInQueue={getPlaceInQueue}
                       toggleModal={toggleModal}
                     />
                   )
