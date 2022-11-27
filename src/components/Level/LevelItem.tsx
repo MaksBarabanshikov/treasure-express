@@ -6,11 +6,12 @@ type Props = {
     level: string
     price: string
     type: string
+    isActive?: boolean
     buyLevel?: any
     toggleModal?: any
     getPlaceInQueue?: any
-    currentLevel?: string
-    currentPrice?: string
+    currentLevel?: number
+    currentPrice?: number
     currentType?: boolean
     payoutCounter?: number
     payoutsLimit?: number
@@ -32,7 +33,7 @@ export const LevelItem = ({
 
     const isCurrentTypeLevel = () => {
         if (currentType !== undefined) {
-            return currentType || Number(payoutCounter) === Number(payoutsLimit)
+            return currentType || (Number(payoutCounter) === Number(payoutsLimit) && Number(payoutsLimit) !== 0)
         }
         return null;
     }
@@ -77,7 +78,7 @@ export const LevelItem = ({
             }
 
             if (currentType === false) {
-                return buyLevel(Number(currentLevel) + 1, currentPrice)
+                return buyLevel(Number(currentLevel), currentPrice)
             }
             return null
         }
@@ -86,7 +87,7 @@ export const LevelItem = ({
 
     useEffect(() => {
         if (getPlaceInQueue) {
-            getPlaceInQueue(Number(currentLevel) + 1);
+            getPlaceInQueue(Number(currentLevel));
         }
     },[])
 
@@ -102,14 +103,14 @@ export const LevelItem = ({
                     </div>
                 }
                 {
-                    isCurrentTypeLevel() !== null && Number(payoutsLimit) !== 0 ?
+                    isCurrentTypeLevel() && Number(payoutsLimit) !== 0 ?
                         <div onClick={handleBuyLevel} className="level-price__item-price justify-content-center">
                             <span>{isDisabled() ? 'reinvest' : 'payments'}</span>
-                        </div> :
+                        </div> : isCurrentTypeLevel() !== null ?
                         <div onClick={handleBuyLevel} className="level-price__item-price text-center">
                             <img style={{width: 37, height: 37}} src={coin} alt="coin"/>
                             <span>{price}</span>
-                        </div>
+                        </div> : ''
                 }
             </button>
         </div>

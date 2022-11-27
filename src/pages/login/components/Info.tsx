@@ -4,6 +4,7 @@ import {BNB} from "../../../helper";
 import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
 import {useAppSelector} from "../../../hooks/hooks";
+import {TREASURE_EXPRESS_ADDRESS} from "../../../contract/config";
 
 export const Info = () => {
     const [statistics, setStatistic] = useState(null)
@@ -22,8 +23,7 @@ export const Info = () => {
         }
     },[CONTRACT_LIST])
 
-    const smartContract = '0xb9B0A10C7cEeA5445aFfc23ddfB172Cb859eC412'
-    const handleCopyContract = () => navigator.clipboard.writeText(smartContract);
+    const handleCopyContract = () => navigator.clipboard.writeText(TREASURE_EXPRESS_ADDRESS);
 
 
     return (
@@ -33,7 +33,7 @@ export const Info = () => {
                 <div className="info-section__contract d-flex justify-content-between">
                     <span>treasure Express smart-contract</span>
                     <div className="d-flex justify-content-between align-items-center">
-                        <span>0xb9B0A1...9eC412</span>
+                        <span>0xC97331...A73F9e</span>
                         <button onClick={handleCopyContract} className="btn py-0 px-2">
                             <img src={copyIcon} alt="copy"/>
                         </button>

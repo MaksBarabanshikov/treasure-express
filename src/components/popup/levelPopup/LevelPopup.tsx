@@ -15,10 +15,11 @@ export const LevelPopup = () => {
   const [price, setPrice] = useState(null)
   const { paymentsIsVisible, paymentsLevel, paymentsPrice, limit, counter } = useAppSelector(state => state.modal)
   const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3)
+  const { referralPayoutSum, rewardSum } = useAppSelector(state => state.levels)
   const dispatch = useAppDispatch()
 
 
-  const getPlaceInQueue = async () => await CONTRACT_LIST?.methods.getPlaceInQueue(wallet, paymentsLevel + 1).call()
+  const getPlaceInQueue = async () => await CONTRACT_LIST?.methods.getPlaceInQueue(wallet, paymentsLevel).call()
 
     useEffect(() => {
       const queueAsync = async () => {
@@ -56,12 +57,12 @@ export const LevelPopup = () => {
   };
 
   const currentPriceLevel = async () => {
-    await CONTRACT_LIST?.methods.levelPrice(paymentsLevel + 1).call().then((res) => {
+    await CONTRACT_LIST?.methods.levelPrice(paymentsLevel).call().then((res) => {
       setPrice(res)
     })
   }
 
-  const buyLevel = async () => await CONTRACT_LIST?.methods.buyLevel(paymentsLevel + 1).send({
+  const buyLevel = async () => await CONTRACT_LIST?.methods.buyLevel(paymentsLevel).send({
     from: wallet,
     value: price,
     gasPrice: currentGasLimit,
@@ -86,7 +87,7 @@ export const LevelPopup = () => {
               <CloseIcon />
             </button>
             <div className="popup__title">
-              <h5>LVL { paymentsLevel + 1 }</h5>
+              <h5>LVL { paymentsLevel }</h5>
               <div style={{maxWidth: 100, margin: '10px auto', height: 20, fontSize: 10}} className="level-price__item-price">
                 <img style={{width: 27, height: 27}} src={coin} alt="coin"/>
                 <span>{ paymentsPrice }</span>
@@ -102,14 +103,14 @@ export const LevelPopup = () => {
                 <span className="d-block mb-3">Partners bonus</span>
                 <div className="level-price__item-price">
                   <img style={{width: 48, height: 48}} src={coin} alt="coin"/>
-                  <span>{price ? BNB(price): 0} BNB</span>
+                  <span>{price ? BNB(referralPayoutSum[paymentsLevel]): 0} BNB</span>
                 </div>
               </div>
               <div className="popup__cols">
                 <span className="d-block mb-3">Level profit</span>
                 <div className="level-price__item-price">
                   <img style={{width: 48, height: 48}} src={coin} alt="coin"/>
-                  <span>{ price ? BNB(price) : 0 } BNB</span>
+                  <span>{ price ? BNB(rewardSum[paymentsLevel]) : 0 } BNB</span>
                 </div>
               </div>
             </Flex>

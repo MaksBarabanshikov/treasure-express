@@ -2,6 +2,7 @@ import {LevelPriceList} from "../../login/components/LevelPriceList";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import {useEffect, useState} from "react";
 import { hidePaymentsModal, showPaymentsModal } from "../../../store/slices/ModalSlice";
+import {initLevels, initPriceLevels} from "../../../store/slices/LevelSlice";
 
 export const UserLevels = () => {
   const [userLevels, setUserLevels] = useState(null)
@@ -9,6 +10,7 @@ export const UserLevels = () => {
   const [resBuyLevel, setResBuyLevel] = useState(null)
 
   const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3)
+  const { activeLevels, priceLevels } = useAppSelector(state => state.levels)
   const { paymentsIsVisible } = useAppSelector(state => state.modal)
   const dispatch = useAppDispatch()
 
@@ -19,8 +21,14 @@ export const UserLevels = () => {
 
 
   useEffect(() => {
-    getUserLevels().then((levels) => setUserLevels(levels))
-    getLevelPrices().then((levelsPrices) => setLevelsPrice(levelsPrices))
+    getUserLevels().then((levels) => {
+      dispatch(initLevels({ levels }));
+      setUserLevels(levels);
+    })
+    getLevelPrices().then((levelsPrices) => {
+      dispatch(initPriceLevels(levelsPrices));
+      setLevelsPrice(levelsPrices);
+    })
   },[resBuyLevel])
 
   const handleBuyLevel = (level, price) => {
@@ -40,16 +48,20 @@ export const UserLevels = () => {
     return dispatch(showPaymentsModal({ level, price, limit, counter }))
   }
 
-
+  if (activeLevels.length && priceLevels.length) {
+   return (
+       <LevelPriceList
+           userLevels={activeLevels}
+           prices={priceLevels}
+           buyLevel={handleBuyLevel}
+           toggleModal={toggleLevelModal}
+           getPlaceInQueue={getPlaceInQueue}
+       />
+   )
+  }
 
   return (
-    (levelsPrice && userLevels) &&
-    <LevelPriceList
-      userLevels={userLevels}
-      prices={levelsPrice}
-      buyLevel={handleBuyLevel}
-      toggleModal={toggleLevelModal}
-      getPlaceInQueue={getPlaceInQueue}
-    />
+      <p>Загрузка</p>
   )
+
 }
