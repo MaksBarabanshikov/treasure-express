@@ -29,7 +29,7 @@ export const UserLevels = () => {
       dispatch(initPriceLevels(levelsPrices));
       setLevelsPrice(levelsPrices);
     })
-  },[resBuyLevel])
+  },[resBuyLevel, wallet])
 
   const handleBuyLevel = (level, price) => {
     buyLevel(level, price).then(() => setResBuyLevel(level))

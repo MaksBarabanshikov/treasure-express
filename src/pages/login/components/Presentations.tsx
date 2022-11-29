@@ -31,7 +31,7 @@ export const Presentations = () => {
     return (
         <div className="col-12 col-xl-4">
             <div className="info-section__presentations h-100 w-100 mt-5 mt-xl-0">
-                <h1>Presentations</h1>
+                <h1 className="text-shadow">Presentations</h1>
                 <div className="d-flex align-items-center justify-content-between mb-5">
                     <img className="me-2" src={Eng} alt="English"/>
                     <span>Presentation on English</span>

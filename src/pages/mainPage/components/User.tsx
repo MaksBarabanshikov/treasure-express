@@ -2,8 +2,8 @@ import avatar from "../../../assets/img/icons/avatar.svg";
 import link from "../../../assets/img/icons/link_icon.svg";
 import { Flex } from "../../../components/layouts/Flex";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { useEffect, useState } from "react";
-import { setRefId } from "../../../store/slices/ReferSlice";
+import { useEffect } from "react";
+import { setUserId } from "../../../store/slices/ReferSlice";
 import { formatDate, getShortWallet } from "../../../helper";
 
 export const User = () => {
@@ -11,26 +11,19 @@ export const User = () => {
 
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
   const { user } = useAppSelector(state => state.user)
-  const { refId } = useAppSelector(state => state.refer)
+  const { userId } = useAppSelector(state => state.refer)
 
   const getReferrer = async () => await CONTRACT_LIST?.methods.getReferrer(wallet).call();
 
   const getReferrerId = async () => await CONTRACT_LIST?.methods.getReferrerId(wallet).call()
 
   useEffect(() => {
+    console.log('123');
     getReferrer()
-    getReferrerId().then((id) => dispatch(setRefId(id)))
-  }, []);
+    getReferrerId().then((id) => dispatch(setUserId(id)))
+  }, [wallet]);
 
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-    }
-  }, [user]);
-
-  if (user) {
-    return (
-      <div className="col-12 col-sm-5 mb-3 mb-sm-0">
+    return user && <div className="col-12 col-sm-5 mb-3 mb-sm-0">
         <Flex className="justify-content-center justify-content-sm-start">
           <img className="avatar me-4" src={avatar} alt="avatar" />
           <div className="user-section__info">
@@ -46,16 +39,10 @@ export const User = () => {
                 Invited { formatDate(new Date(Number(user[1]) * 1000)) } by
               </span>
               <div className="user-id">
-                ID { refId }
+                ID { userId }
               </div>
             </div>
           </div>
         </Flex>
       </div>
-    )
-  }
-  return(
-    <div className="col-12 col-sm-5 mb-3 mb-sm-0"></div>
-  )
-
 };

@@ -24,7 +24,6 @@ export const LevelPopup = () => {
     useEffect(() => {
       const queueAsync = async () => {
         await getPlaceInQueue().then((res) => {
-          console.log(res);
           setQueue(Math.round((res[0] / res[1]) * 100));
         })
       }
@@ -35,11 +34,14 @@ export const LevelPopup = () => {
         clearInterval(interval)
       }
 
-      if (queue === 100) {
-        clearInterval(interval)
+      const clear = () => {
+        setQueue(0);
+        clearInterval(interval);
       }
-      return () => clearInterval(interval)
-    },[paymentsIsVisible, queue])
+
+      return () => clear()
+    },[paymentsIsVisible])
+
 
   // @ts-ignore
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, {useEffect, useState, Suspense} from "react";
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
 import {RouteList} from "./components/Route";
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import "overlayscrollbars/css/OverlayScrollbars.css"
 import {OverlayScrollbarsComponent} from "overlayscrollbars-react";
 import {useSelector} from "react-redux";
@@ -10,20 +10,19 @@ import { CONTRACT_ABI, CONTRACT_ADDRESS,TREASURE_EXPRESS_ADDRESS,TREASURE_EXPRES
 import Web3 from "web3";
 import {useAppDispatch} from "./hooks/hooks";
 import { connectWeb3, getListABI } from "./store/slices/Web3Slice";
-
-const Registration = React.lazy(() => import('./components/popup/registration/Registration').then(({ Registration }) => ({ default: Registration })))
+import { Toaster } from "react-hot-toast";
+import { setIsReg } from "./store/slices/UserSlice";
 
 function App() {
     const initialHeight = {
         height: '100vh',
         zIndex: 100
     }
-
     const [height, setHeight] = useState({ ...initialHeight });
     const { disabled } = useSelector((state: any) => state.scroll)
+    const { CONTRACT_LIST } = useSelector((state: any) => state.web3)
 
     const dispatch = useAppDispatch()
-
 
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider);
@@ -42,14 +41,16 @@ function App() {
             dispatch(connectWeb3())
         }
 
-        window.ethereum?.on('accountsChanged', () => dispatch(connectWeb3()))
+        window.ethereum?.on('accountsChanged', async (res: any) => {
+            await dispatch(connectWeb3());
+        })
     },[])
 
 
     useEffect(() => {
         if (disabled) {
             setHeight({
-                height: "",
+                height: "100vh",
                 zIndex: 100
             })
         } else {
@@ -66,16 +67,24 @@ function App() {
                 <OverlayScrollbarsComponent
                     style={height}
                 >
-                    <Header/>
+                    <Header />
                     <main>
                         <Suspense fallback={"loading"}>
                             <RouteList />
                         </Suspense>
-                        <Suspense fallback={''}>
-                            <Registration/>
-                        </Suspense>
+                        <Toaster
+                          position="top-center"
+                          toastOptions={{
+                              className: "",
+                              style: {
+                                  border: "2px solid #915E31",
+                                  backgroundColor: "#25221A",
+                                  color: "#FAAF16",
+                                  fontWeight: "700"
+                              }
+                          }} />
                     </main>
-                    <Footer/>
+                    <Footer />
 
                 </OverlayScrollbarsComponent>
             </div>

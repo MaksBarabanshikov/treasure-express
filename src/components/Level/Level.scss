@@ -35,6 +35,17 @@ $dark: #25221A;
     background: url("../../assets/img/bg/price-item-brown.svg") no-repeat;
     background-size: 100% 100%;
 
+    &:hover .level-price__item-price{
+        background-color: #322A1F;
+        img {
+          transform: translateY(-70%);
+        }
+    }
+
+    &:hover h3 {
+      color: #FAAF16;
+    }
+
     @media (max-width: 1400px) {
       padding: 34px 16px 24px 16px;
     }
@@ -78,6 +89,7 @@ $dark: #25221A;
       text-align: center;
       color: #DFC4A6;
       text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
 
       @media (max-width: 992px) {
         font-size: 30px;

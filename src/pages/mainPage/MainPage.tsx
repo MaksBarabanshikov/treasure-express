@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React, { Suspense, useEffect } from "react";
 import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
 import { Transactions } from "../../components/transaction/Transactions";
@@ -8,18 +8,18 @@ import { Container } from "../../components/layouts/Container";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setUser } from "../../store/slices/UserSlice";
 
-const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
-    .then(({ LevelPopup }) => ({ default: LevelPopup })))
-
 export const MainPage = () => {
-
+  const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
+    .then(({ LevelPopup }) => ({ default: LevelPopup })))
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 
   const dispatch = useAppDispatch()
 
   const getUser: any = async () => await CONTRACT_LIST?.methods.getUser(wallet).call();
 
-  getUser().then((user) => dispatch(setUser(user)))
+  useEffect(() => {
+    getUser().then((user) => dispatch(setUser(user)))
+  }, [wallet]);
 
   return (
     <div className="wrap">

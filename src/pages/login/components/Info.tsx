@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {BNB} from "../../../helper";
+import { BNB, getShortContract } from "../../../helper";
 
 import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
@@ -29,15 +29,15 @@ export const Info = () => {
     return (
         <div className="col-12 col-xl-8">
             <div className="info-section__info w-100 h-100">
-                <h1>Treasure Express Info</h1>
+                <h1 className="text-shadow">Treasure Express Info</h1>
                 <div className="info-section__contract d-flex justify-content-between">
                     <span>treasure Express smart-contract</span>
                     <div className="d-flex justify-content-between align-items-center">
-                        <span>0xC97331...A73F9e</span>
+                        <span>{getShortContract(TREASURE_EXPRESS_ADDRESS)}</span>
                         <button onClick={handleCopyContract} className="btn py-0 px-2">
                             <img src={copyIcon} alt="copy"/>
                         </button>
-                        <a href="https://testnet.bscscan.com/address/0xb9b0a10c7ceea5445affc23ddfb172cb859ec412#code"
+                        <a href="https://bscscan.com/address/0xc97331d1a2d7fe257df234cd32ccc37679a73f9e#readContract"
                            className="btn py-0 px-2"
                            target="_blank"
                            rel="noreferrer"

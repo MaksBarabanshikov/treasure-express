@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IReferSlice {
   userId: string | null;
-  refId: string | null;
+  refAddress: string | null;
 }
 
 const initialState: IReferSlice = {
   userId: null,
-  refId: null
+  refAddress: null
 }
 
 const referSlice = createSlice({
@@ -15,10 +15,10 @@ const referSlice = createSlice({
   initialState,
   reducers: {
     setUserId: (state: IReferSlice, action) => void(state.userId = action.payload),
-    setRefId: (state: IReferSlice, action) => void(state.refId = action.payload)
+    setRefAddress: (state: IReferSlice, action) => void(state.refAddress = action.payload)
   }
 })
 
-export const { setUserId, setRefId } = referSlice.actions
+export const { setUserId, setRefAddress } = referSlice.actions
 
 export default referSlice.reducer

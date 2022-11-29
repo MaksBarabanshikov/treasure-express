@@ -1,12 +1,13 @@
 import { FaqIcon } from "../../../components/Icons/faqIcon";
 import { Flex } from "../../../components/layouts/Flex";
 import { CopyIcon } from "../../../components/Icons/copyIcon";
-import { LinkIcon } from "../../../components/Icons/LinkIcon";
 import { useAppSelector } from "../../../hooks/hooks";
+import toast from "react-hot-toast";
 
 export const PersonalBoard = () => {
 
   const { wallet } = useAppSelector(state => state.web3)
+  const { user } = useAppSelector(state => state.user)
 
   const local = 'http://localhost:3000'
 
@@ -16,11 +17,16 @@ export const PersonalBoard = () => {
 
   const shortWallet = wallet?.slice(0, 5).concat('...')
 
-  const refLinkFull = wallet !== null ? baseUrl + '/?' + wallet : baseUrl
+  const refLinkFull = user !== null ? baseUrl + '/?' + user[0] : baseUrl
 
-  const refLink = wallet !== null ? baseUrl + '/?' + shortWallet : baseUrl;
+  const refLink = user !== null ? baseUrl + '/?' + user[0] : baseUrl;
 
-  const handleCopy = () => navigator.clipboard.writeText(refLinkFull)
+  const handleCopy = () => {
+    notify();
+    return navigator.clipboard.writeText(refLinkFull);
+  }
+
+  const notify = () => toast('Сopied!');
 
   return (
     <div className="personal-board col-8 col-sm-6 m-auto">
@@ -29,7 +35,7 @@ export const PersonalBoard = () => {
         <FaqIcon />
       </Flex>
       <Flex>
-        <a onClick={handleCopy} className="personal-link">{refLink}</a>
+        <a style={{ cursor: 'pointer' }} onClick={handleCopy} className="personal-link">{refLink}</a>
         <div className="mx-1 mx-md-3" onClick={handleCopy}>
           <CopyIcon/>
         </div>

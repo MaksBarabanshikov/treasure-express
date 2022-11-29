@@ -93,7 +93,7 @@ export const LevelItem = ({
 
     return (
         <div className="col-6 col-sm-4 col-md-3 p-2">
-            <button className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
+            <button onClick={handleBuyLevel} className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
                 <h3>{level}</h3>
                 {
                     isCurrentTypeLevel() === null &&
@@ -104,10 +104,10 @@ export const LevelItem = ({
                 }
                 {
                     isCurrentTypeLevel() && Number(payoutsLimit) !== 0 ?
-                        <div onClick={handleBuyLevel} className="level-price__item-price justify-content-center">
+                        <div className="level-price__item-price justify-content-center">
                             <span>{isDisabled() ? 'reinvest' : 'payments'}</span>
                         </div> : isCurrentTypeLevel() !== null ?
-                        <div onClick={handleBuyLevel} className="level-price__item-price text-center">
+                        <div className="level-price__item-price text-center">
                             <img style={{width: 37, height: 37}} src={coin} alt="coin"/>
                             <span>{price}</span>
                         </div> : ''
