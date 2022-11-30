@@ -7,10 +7,11 @@ import { InfoSection } from "../../components/infoSection/InfoSection";
 import { Container } from "../../components/layouts/Container";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setUser } from "../../store/slices/UserSlice";
+import { LevelPopup } from "../../components/popup/levelPopup/LevelPopup";
 
 export const MainPage = () => {
-  const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
-    .then(({ LevelPopup }) => ({ default: LevelPopup })))
+  // const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
+  //   .then(({ LevelPopup }) => ({ default: LevelPopup })))
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 
   const dispatch = useAppDispatch()
@@ -24,9 +25,7 @@ export const MainPage = () => {
   return (
     <div className="wrap">
       <UserSection/>
-        <Suspense fallback={''}>
-            <LevelPopup/>
-        </Suspense>
+      <LevelPopup/>
       <Container>
         <LevelPrice col={10} className={"main-level"}/>
         <InfoSection />

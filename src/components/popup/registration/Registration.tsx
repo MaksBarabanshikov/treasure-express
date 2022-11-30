@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
 import checkSvg from "../../../assets/img/bg/check.svg";
 import { setRefAddress, setUserId } from "../../../store/slices/ReferSlice";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const Registration = () => {
   const [disabled, setDisabled] = useState(true);
@@ -96,11 +97,51 @@ export const Registration = () => {
     console.log('value: ',el2); // 👈️ element here
   }, [inputRef]);
 
+  const dropIn = {
+    hidden: {
+      y: '-100vh',
+      opacity: 0
+    },
+    visible: {
+      y: "0",
+      opacity: 1,
+      transition: {
+        duration: 0.1,
+        type: "spring",
+        damping: 25,
+        stiffness: 300,
+      }
+    },
+    exit: {
+      y: "100vh",
+      opacity: 0
+    }
+  }
 
   return (
-    <>
-      {regIsVisible && <div className="popup popup-reg text-shadow">
-        <div className="popup__body">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 0.3
+            }
+          }}
+          exit={{
+            opacity: 0,
+            transition: {
+              duration: 0.3
+            }
+          }}
+          className="popup popup-reg text-shadow"
+        >
+        <motion.div
+          variants={dropIn}
+          initial={'hidden'}
+          animate={'visible'}
+          exit={'exit'}
+          className="popup__body"
+        >
           <button onClick={handleHideRegistration} className="popup__close btn position-absolute">
             <CloseIcon />
           </button>
@@ -129,9 +170,7 @@ export const Registration = () => {
           <button disabled={disabled} onClick={registerUser} className="border-btn-small btn">
             Confirm registration (0.025 BNB)
           </button>
-        </div>
-      </div>
-      }
-    </>
+        </motion.div>
+      </motion.div>
   );
 };

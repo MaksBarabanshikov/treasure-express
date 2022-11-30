@@ -2,7 +2,7 @@ import React, {useEffect, useState, Suspense} from "react";
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
 import {RouteList} from "./components/Route";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "overlayscrollbars/css/OverlayScrollbars.css"
 import {OverlayScrollbarsComponent} from "overlayscrollbars-react";
 import {useSelector} from "react-redux";
@@ -11,7 +11,6 @@ import Web3 from "web3";
 import {useAppDispatch} from "./hooks/hooks";
 import { connectWeb3, getListABI } from "./store/slices/Web3Slice";
 import { Toaster } from "react-hot-toast";
-import { setIsReg } from "./store/slices/UserSlice";
 
 function App() {
     const initialHeight = {
