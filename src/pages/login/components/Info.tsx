@@ -5,6 +5,9 @@ import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
 import {useAppSelector} from "../../../hooks/hooks";
 import {TREASURE_EXPRESS_ADDRESS} from "../../../contract/config";
+import toast from "react-hot-toast";
+import { LinkIcon } from "../../../components/Icons/LinkIcon";
+import { CopyIcon } from "../../../components/Icons/copyIcon";
 
 export const Info = () => {
     const [statistics, setStatistic] = useState(null)
@@ -23,7 +26,12 @@ export const Info = () => {
         }
     },[CONTRACT_LIST])
 
-    const handleCopyContract = () => navigator.clipboard.writeText(TREASURE_EXPRESS_ADDRESS);
+    const handleCopy = () => {
+        notify();
+        return navigator.clipboard.writeText(TREASURE_EXPRESS_ADDRESS);
+    }
+
+    const notify = () => toast('Сopied!');
 
 
     return (
@@ -33,10 +41,14 @@ export const Info = () => {
                 <div className="info-section__contract d-flex justify-content-between">
                     <span>treasure Express smart-contract</span>
                     <div className="d-flex justify-content-between align-items-center">
-                        <span>{getShortContract(TREASURE_EXPRESS_ADDRESS)}</span>
-                        <button onClick={handleCopyContract} className="btn py-0 px-2">
-                            <img src={copyIcon} alt="copy"/>
-                        </button>
+                        <div onClick={handleCopy} style={{cursor: 'pointer'}} className={'d-inline-flex'}>
+                            <span className={'me-2'}>{getShortContract(TREASURE_EXPRESS_ADDRESS)}</span>
+                            <CopyIcon />
+                        </div>
+
+                        {/*<button onClick={handleCopy} className="btn py-0 px-2">*/}
+                        {/*    <img src={copyIcon} alt="copy"/>*/}
+                        {/*</button>*/}
                         <a href="https://bscscan.com/address/0xc97331d1a2d7fe257df234cd32ccc37679a73f9e#readContract"
                            className="btn py-0 px-2"
                            target="_blank"

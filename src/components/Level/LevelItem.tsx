@@ -14,7 +14,8 @@ type Props = {
     currentPrice?: number
     currentType?: boolean
     payoutCounter?: number
-    payoutsLimit?: number
+    payoutsLimit?: number,
+    referralPayoutSum?: number
 };
 
 export const LevelItem = ({
@@ -28,7 +29,8 @@ export const LevelItem = ({
                               toggleModal,
                               payoutCounter,
                               payoutsLimit,
-                              getPlaceInQueue
+                              getPlaceInQueue,
+                              referralPayoutSum
                           }: Props) => {
 
     const isCurrentTypeLevel = () => {
@@ -48,16 +50,20 @@ export const LevelItem = ({
     const getCurrentLevel = () => {
         if (currentType !== undefined) {
             if (isDisabled()) {
-                return 'level-price__item_current'
+                return "level-price__item_current";
             }
 
             if (currentType) {
-                return "level-price__item_complete"
+                return "level-price__item_complete";
             }
 
-            if (!currentType) {
-                return 'level-price__item_locked'
+            if (!currentType && Number(referralPayoutSum) !== 0) {
+                return "level-price__item_current";
             }
+
+                if (!currentType) {
+                    return "level-price__item_locked";
+                }
         }
 
         if (type === 'current') {

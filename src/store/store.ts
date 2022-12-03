@@ -6,8 +6,6 @@ import referSlice from "./slices/ReferSlice";
 import userSlice from "./slices/UserSlice";
 import levelSlice from "./slices/LevelSlice";
 
-
-
 const store = configureStore({
     reducer: {
         web3: web3Slice,

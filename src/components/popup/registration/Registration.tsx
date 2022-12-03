@@ -10,6 +10,7 @@ import { hideRegModal } from "../../../store/slices/ModalSlice";
 import checkSvg from "../../../assets/img/bg/check.svg";
 import { setRefAddress, setUserId } from "../../../store/slices/ReferSlice";
 import { AnimatePresence, motion } from "framer-motion";
+import { dropIn } from "../levelPopup/LevelPopup";
 
 export const Registration = () => {
   const [disabled, setDisabled] = useState(true);
@@ -96,27 +97,6 @@ export const Registration = () => {
     const el2 = inputRef.current;
     console.log('value: ',el2); // 👈️ element here
   }, [inputRef]);
-
-  const dropIn = {
-    hidden: {
-      y: '-100vh',
-      opacity: 0
-    },
-    visible: {
-      y: "0",
-      opacity: 1,
-      transition: {
-        duration: 0.1,
-        type: "spring",
-        damping: 25,
-        stiffness: 300,
-      }
-    },
-    exit: {
-      y: "100vh",
-      opacity: 0
-    }
-  }
 
   return (
         <motion.div

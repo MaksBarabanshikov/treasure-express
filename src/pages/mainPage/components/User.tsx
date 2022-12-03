@@ -18,7 +18,6 @@ export const User = () => {
   const getReferrerId = async () => await CONTRACT_LIST?.methods.getReferrerId(wallet).call()
 
   useEffect(() => {
-    console.log('123');
     getReferrer()
     getReferrerId().then((id) => dispatch(setUserId(id)))
   }, [wallet]);

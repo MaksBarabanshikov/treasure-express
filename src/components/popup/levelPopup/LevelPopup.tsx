@@ -10,6 +10,30 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import head from "../../../assets/img/bg/popup-level-head.png";
 import coin from "../../../assets/img/icons/coin.svg";
 
+export const dropIn = {
+  hidden: {
+    y: '-100vh',
+    opacity: 0,
+  },
+  visible: {
+    y: "0",
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+      damping: 20,
+      stiffness: 150,
+    }
+  },
+  exit: {
+    y: "100vh",
+    opacity: 0,
+    transition: {
+      duration: 0.3
+    }
+  }
+}
+
 export const LevelPopup = () => {
   const [queue, setQueue] = useState(0);
   const [price, setPrice] = useState(null);
@@ -84,21 +108,24 @@ export const LevelPopup = () => {
   const dropIn = {
     hidden: {
       y: '-100vh',
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       y: "0",
       opacity: 1,
       transition: {
-        duration: 0.1,
+        duration: 0.3,
         type: "spring",
-        damping: 25,
-        stiffness: 300,
+        damping: 20,
+        stiffness: 150,
       }
     },
     exit: {
       y: "100vh",
-      opacity: 0
+      opacity: 0,
+      transition: {
+        duration: 0.3
+      }
     }
   }
 

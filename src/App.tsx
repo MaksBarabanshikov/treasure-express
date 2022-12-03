@@ -19,7 +19,7 @@ function App() {
     }
     const [height, setHeight] = useState({ ...initialHeight });
     const { disabled } = useSelector((state: any) => state.scroll)
-    const { CONTRACT_LIST } = useSelector((state: any) => state.web3)
+    const { CONTRACT_LIST, wallet } = useSelector((state: any) => state.web3)
 
     const dispatch = useAppDispatch()
 
@@ -72,7 +72,7 @@ function App() {
                             <RouteList />
                         </Suspense>
                         <Toaster
-                          position="top-center"
+                          position="bottom-center"
                           toastOptions={{
                               className: "",
                               style: {

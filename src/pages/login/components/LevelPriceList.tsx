@@ -38,6 +38,7 @@ export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPl
                             currentLevel={index}
                             payoutCounter={Number(payoutsLevels[index])}
                             payoutsLimit={maxPayouts[index]}
+                            referralPayoutSum={referralPayoutSum[index]}
                             buyLevel={buyLevel}
                             getPlaceInQueue={getPlaceInQueue}
                             toggleModal={toggleModal}
