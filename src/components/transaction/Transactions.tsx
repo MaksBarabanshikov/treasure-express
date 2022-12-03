@@ -7,11 +7,10 @@ import { useAppSelector } from "../../hooks/hooks";
 import axios from "axios";
 
 interface Props {
-  items: ITransaction[];
+  items: any[];
 }
 
 export const Transactions = ({ items }: Props) => {
-  const [tran, setTran] = useState([]);
   const { wallet } = useAppSelector(state => state.web3)
 
   useEffect(() => {
@@ -27,6 +26,10 @@ export const Transactions = ({ items }: Props) => {
     }
   }, [wallet]);
 
+  useEffect(() => {
+    items.forEach(item => console.log(item))
+  },[items])
+
 
 
   return (
@@ -40,16 +43,13 @@ export const Transactions = ({ items }: Props) => {
           }}
         >
           {
-            items.map((item) => (
+            items.length ? items.map((item, index) => (
               <TransactionItem
-                key={item.id}
-                id={item.id}
-                idUser={item.idUser}
-                type={item.type}
-                description={item.description}
-                created_at={item.created_at}
+                key={item}
+                id={String(index)}
+                idUser={String(index)}
               />
-            ))
+            )) : <h2 className={'text-white text-center mt-4'}>Empty :(</h2>
           }
         </OverlayScrollbarsComponent>
       </div>

@@ -1,8 +1,7 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
 import { Transactions } from "../../components/transaction/Transactions";
-import { ITransaction, transactions } from "../../assets/data/transactions";
 import { InfoSection } from "../../components/infoSection/InfoSection";
 import { Container } from "../../components/layouts/Container";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -12,9 +11,7 @@ import Web3 from "web3";
 import { CONTRACT_ADDRESS } from "../../contract/config";
 
 export const MainPage = () => {
-  // const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
-  //   .then(({ LevelPopup }) => ({ default: LevelPopup })))
-  const [transitions, setTransactions] = useState([]);
+  const [transaction, setTransactions] = useState([]);
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 
   const dispatch = useAppDispatch()
@@ -23,26 +20,22 @@ export const MainPage = () => {
     if (wallet) {
       const web3 = await new Web3(Web3.givenProvider);
       const transactionList: any = []
-      // const options = {
-      //   fromBlock: 0,
-      //   address: wallet,
-      // };
 
       const test = async () => await web3.eth.getPastLogs({
         fromBlock:'0',
         address: CONTRACT_ADDRESS,
         toBlock: "latest",
       })
-       await test().then(res => {
+      await test().then(res => {
          res.forEach(rec => {
             const transaction = async () => await web3.eth.getTransaction(rec.transactionHash)
             transaction().then((tran) => {
               if ( tran.from === wallet ) {
                 transactionList.push(tran)
+                setTransactions(transactionList)
               }
             })
           });
-         setTransactions(transactionList)
         }).catch(err => console.log("getPastLogs failed", err));
     }
   }
@@ -53,6 +46,7 @@ export const MainPage = () => {
     getTransaction()
   }, [wallet]);
 
+
   return (
     <div className="wrap">
       <UserSection/>
@@ -60,7 +54,7 @@ export const MainPage = () => {
       <Container>
         <LevelPrice col={10} className={"main-level"}/>
         <InfoSection />
-        <Transactions items={transactions}/>
+        <Transactions items={transaction}/>
       </Container>
     </div>
 )
