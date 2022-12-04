@@ -29,3 +29,39 @@ export const formatDate = (date) => {
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
+
+export const formatDateForTransaction = (date) :string => {
+    const now = Date.now();
+    const difference = now - date;
+    const seconds = Math.floor(difference / 1000);
+    const minutes = Math.floor(seconds / 60);
+
+    if ( !minutes ) {
+        return 'now'
+    }
+
+    const hours = Math.floor(minutes / 60);
+    if (!hours) {
+        return minutes + ' minutes'
+    }
+
+    const days = Math.floor(hours / 24);
+
+    if (!days) {
+        return hours + ' hours'
+    }
+
+    const months = Math.floor(days / 30);
+
+    if (!months) {
+        return days + ' days'
+    }
+
+    const years = Math.floor(months / 12);
+
+    if (!years) {
+        return months + ' months'
+    }
+
+    return years + ' years'
+}

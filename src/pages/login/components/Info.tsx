@@ -11,12 +11,24 @@ import { CopyIcon } from "../../../components/Icons/copyIcon";
 
 export const Info = () => {
     const [statistics, setStatistic] = useState(null)
+    const [oldStat, setOldStat] = useState(null)
     const { CONTRACT_LIST } = useAppSelector(state => state.web3)
 
     const getGlobalStatistic = async () => {
         if (CONTRACT_LIST) {
             const statistics = await CONTRACT_LIST.methods.getGlobalStatistic().call()
             setStatistic(statistics)
+            if (localStorage.getItem('statistics')) {
+                const stat = JSON.parse(localStorage.getItem('statistics')!)
+                setOldStat(stat)
+                if (stat[3] !== new Date().getDate()) {
+                    localStorage.removeItem('statistics')
+                }
+            }
+            else {
+                console.log('else')
+                localStorage.setItem('statistics', JSON.stringify([...statistics, new Date().getDate()]))
+            }
         }
     }
 
@@ -62,17 +74,32 @@ export const Info = () => {
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Members Total</h4>
                         <p>{statistics ? statistics[0]: 42}</p>
-                        <span>+14</span>
+                        <span>
+                            +
+                            {
+                                oldStat && statistics ? statistics[0] - oldStat[0] : 14
+                            }
+                        </span>
                     </div>
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Transactions</h4>
                         <p>{statistics ? statistics[1]: 1080}</p>
-                        <span>+582</span>
+                        <span>
+                            +
+                            {
+                                oldStat && statistics ? statistics[1] - oldStat[1] : 100
+                            }
+                        </span>
                     </div>
                     <div className="col-4 px-1 px-sm-3">
                         <h4>Turnover, BNB</h4>
                         <p>{statistics ? BNB(statistics[2]): 1708.2}</p>
-                        <span>+743.4</span>
+                        <span>
+                            +
+                            {
+                                 oldStat && statistics ? (Number(BNB(statistics[2])) - Number(BNB(oldStat[2]))).toFixed(1) : 743.4
+                            }
+                        </span>
                     </div>
                 </div>
             </div>

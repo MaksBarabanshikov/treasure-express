@@ -5,30 +5,31 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import titleTab from "../../assets/img/bg/transactions_title.png"
 import { useAppSelector } from "../../hooks/hooks";
 import axios from "axios";
+import {BNB} from "../../helper";
 
 interface Props {
   items: any[];
 }
 
 export const Transactions = ({ items }: Props) => {
-  const { wallet } = useAppSelector(state => state.web3)
+  const { user } = useAppSelector(state => state.user)
 
-  useEffect(() => {
-    if (wallet) {
-      axios.get('https://api.bscscan.com/api' +
-        '?module=account' +
-        '&action=txlistinternal' +
-        // `&address=${wallet}` +
-        "&address=0x3fa40c4a5e791a4bf21897540c3e594a9cbb35dff1f1a518fb0fa1e0d9986946" +
-        '&sort=asc' +
-        '&apikey=UH2TYAEM94FQDYN5AB47TGINPENFDWJCE6')
-        .then(r => console.log(r))
-    }
-  }, [wallet]);
-
-  useEffect(() => {
-    items.forEach(item => console.log(item))
-  },[items])
+  // useEffect(() => {
+  //   if (wallet) {
+  //     axios.get('https://api.bscscan.com/api' +
+  //       '?module=account' +
+  //       '&action=txlistinternal' +
+  //       // `&address=${wallet}` +
+  //       "&address=0x3fa40c4a5e791a4bf21897540c3e594a9cbb35dff1f1a518fb0fa1e0d9986946" +
+  //       '&sort=asc' +
+  //       '&apikey=UH2TYAEM94FQDYN5AB47TGINPENFDWJCE6')
+  //       .then(r => console.log(r))
+  //   }
+  // }, [wallet]);
+  //
+  // useEffect(() => {
+  //   items.forEach(item => console.log(item))
+  // },[items])
 
 
 
@@ -47,7 +48,10 @@ export const Transactions = ({ items }: Props) => {
               <TransactionItem
                 key={item}
                 id={String(index)}
-                idUser={String(index)}
+                createdAt={item.created_at}
+                price={BNB(item.value)}
+                userId={user? user[0] : 0}
+                // idUser={String(index)}
               />
             )) : <h2 className={'text-white text-center mt-4'}>Empty :(</h2>
           }
