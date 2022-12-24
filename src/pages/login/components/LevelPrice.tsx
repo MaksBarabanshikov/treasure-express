@@ -22,7 +22,7 @@ export const LevelPrice = ({ titleEl, col, className }: Props) => {
         <h1 className="mb-4">
           { titleEl }
         </h1>
-        <LevelPriceList/>
+        <LevelPriceList isMain={false}/>
       </div>
     );
   }

@@ -51,6 +51,7 @@ export const UserLevels = () => {
   if (activeLevels.length && priceLevels.length) {
    return (
        <LevelPriceList
+           isMain={true}
            userLevels={activeLevels}
            prices={priceLevels}
            buyLevel={handleBuyLevel}

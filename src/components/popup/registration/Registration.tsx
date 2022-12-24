@@ -2,19 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { Flex } from "../../layouts/Flex";
 import title from "../../../assets/img/bg/reg_title.png";
 import { CloseIcon } from "../../Icons/closeIcon";
-import { useNavigate } from "react-router-dom";
 import { Row } from "../../layouts/Row";
 import { disabledScroll, enabledScroll } from "../../../store/slices/ScrollSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { hideRegModal } from "../../../store/slices/ModalSlice";
 import checkSvg from "../../../assets/img/bg/check.svg";
 import { setRefAddress, setUserId } from "../../../store/slices/ReferSlice";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { dropIn } from "../levelPopup/LevelPopup";
 import {setIsReg} from "../../../store/slices/UserSlice";
 
 export const Registration = () => {
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
   const [error, setError] = useState<null | string>(null);
 
   const inputRef: any = useRef();
@@ -67,13 +66,13 @@ export const Registration = () => {
   const handleCheckUserId = () => {
     referIdInput(inputRef.current.value).then((res) => {
       if (res === "0x0000000000000000000000000000000000000000") {
-        setDisabled(true);
+        // setDisabled(true);
         return setError("No such user");
       }
       setError(null);
       dispatch(setUserId(inputRef.current.value));
       dispatch(setRefAddress(res))
-      setDisabled(false);
+      // setDisabled(false);
     });
   };
   // @ts-ignore
@@ -92,7 +91,9 @@ export const Registration = () => {
       })
     }
 
-    if (userId) {
+    // @ts-ignore
+    if (userId !== 1 ) {
+      console.log('userId', userId)
       inputRef.current.value = userId;
     }
   }, [userId]);
@@ -139,11 +140,10 @@ export const Registration = () => {
               <span>Upline address:</span>
               <Row>
                 <div className="input col-6 position-relative">
-                  <input ref={inputRef} onInput={() => setDisabled(true)} type="text" />
+                  <input ref={inputRef} onInput={() => handleCheckUserId()} type="text" />
                   {error !== null && <div className="error-message text-danger position-absolute">{error}</div>}
                   <span className="status"><img src={checkSvg} alt={"treasure-express"} /></span>
                 </div>
-                <button onClick={handleCheckUserId} className="upline btn col-5">Approve upline</button>
               </Row>
             </div>
           </Flex>
@@ -151,7 +151,7 @@ export const Registration = () => {
             You take all the responsibility for you actions. By interacting with the smart contract, you agree to the
             rules of the game and understand that all blockchain transactions are irrevocable.
           </p>
-          <button disabled={disabled} onClick={registerUser} className="border-btn-small btn">
+          <button onClick={registerUser} className="border-btn-small btn">
             Confirm registration (0.025 BNB)
           </button>
         </motion.div>

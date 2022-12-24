@@ -11,6 +11,7 @@ import { CopyIcon } from "../../../components/Icons/copyIcon";
 
 export const Info = () => {
     const [statistics, setStatistic] = useState(null)
+    const [oldStat, setOldStat] = useState(null)
     const { CONTRACT_LIST } = useAppSelector(state => state.web3)
 
     const getGlobalStatistic = async () => {

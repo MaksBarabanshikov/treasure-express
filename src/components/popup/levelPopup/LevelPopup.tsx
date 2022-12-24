@@ -35,7 +35,7 @@ export const dropIn = {
 }
 
 export const LevelPopup = () => {
-  const [queue, setQueue] = useState(0);
+  const [queue, setQueue] = useState({value: 0, text: 'ahead'});
   const [price, setPrice] = useState(null);
   const { paymentsIsVisible, paymentsLevel, paymentsPrice, limit, counter } = useAppSelector(state => state.modal);
   const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3);
@@ -49,7 +49,9 @@ export const LevelPopup = () => {
       const queueAsync = async () => {
         await getPlaceInQueue().then((res) => {
           console.log(res);
-          setQueue(Math.round((res[0] / res[1]) * 100));
+          const value = Math.round(((res[0] - 1) / res[1]) * 100);
+          const text = res[1] - (res[0] - 1);
+          setQueue({value, text: text + ' ' + 'ahead'});
         })
       }
 
@@ -60,7 +62,7 @@ export const LevelPopup = () => {
       }
 
       const clear = () => {
-        setQueue(0);
+        setQueue({ value: 0, text: 'ahead' });
         clearInterval(interval);
       }
 
@@ -173,19 +175,21 @@ export const LevelPopup = () => {
                 <img src={head} alt="" />
                 <h1>{counter} of {limit}</h1>
               </div>
-              {Number(limit) !== Number(counter) &&
+              {Number(limit) !== Number(counter) && <div className="position-relative">
+                <span className="progress-span position-absolute">{ queue.text }</span>
                 <ProgressBar
-                  height={"34px"}
-                  borderRadius={"13px"}
-                  width={"96.5%"}
-                  labelColor={"#fff"}
-                  labelSize={"26px"}
-                  bgColor={"#FFD640"}
-                  className={"my-progress"}
-                  completed={queue}
-                  baseBgColor={"transparent"}
-                  labelAlignment={"center"}
+                    height={"34px"}
+                    borderRadius={"13px"}
+                    width={"96.5%"}
+                    labelColor={"#fff"}
+                    labelSize={"26px"}
+                    bgColor={"#FFD640"}
+                    className={"my-progress"}
+                    completed={queue.value}
+                    baseBgColor={"transparent"}
+                    labelAlignment={"center"}
                 />
+              </div>
               }
               <Flex className="justify-content-between justify-content-lg-center mb-3 mb-lg-4">
                 <div className="popup__cols me-5">

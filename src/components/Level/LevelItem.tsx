@@ -16,6 +16,7 @@ type Props = {
     payoutCounter?: number
     payoutsLimit?: number,
     referralPayoutSum?: number
+    disabled?: boolean
 };
 
 export const LevelItem = ({
@@ -30,7 +31,8 @@ export const LevelItem = ({
                               payoutCounter,
                               payoutsLimit,
                               getPlaceInQueue,
-                              referralPayoutSum
+                              referralPayoutSum,
+                              disabled
                           }: Props) => {
 
     const isCurrentTypeLevel = () => {
@@ -99,7 +101,7 @@ export const LevelItem = ({
 
     return (
         <div className="col-6 col-sm-4 col-md-3 p-2">
-            <button onClick={handleBuyLevel} className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
+            <button disabled={disabled} onClick={handleBuyLevel} className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
                 <h3>{level}</h3>
                 {
                     isCurrentTypeLevel() === null &&

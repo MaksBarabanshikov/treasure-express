@@ -8,10 +8,11 @@ interface Props {
     prices?: any[];
     buyLevel?: any,
     toggleModal?: any,
-    getPlaceInQueue?: any
+    getPlaceInQueue?: any,
+    isMain: boolean
 }
 
-export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPlaceInQueue}: Props) => {
+export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPlaceInQueue, isMain}: Props) => {
     const {
         priceLevels,
         activeLevels,
@@ -22,7 +23,13 @@ export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPl
         rewardSum
     } = useAppSelector(state => state.levels)
 
-    if (priceLevels.length && activeLevels.length) {
+    if (priceLevels.length && activeLevels.length && isMain) {
+        const disabled = (index) : boolean => {
+            if (index === 1) {
+                return false;
+            }
+            return activeLevels[index - 1] === false;
+        }
         return <div className="level-price__list row">
             {
                 priceLevels.map((item, index) =>
@@ -42,6 +49,7 @@ export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPl
                             buyLevel={buyLevel}
                             getPlaceInQueue={getPlaceInQueue}
                             toggleModal={toggleModal}
+                            disabled={disabled(index)}
                         />
                     )
                 )

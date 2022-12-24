@@ -820,11 +820,26 @@ h1 {
     }
   }
   span {
+    display: none !important;
     line-height: 26px !important;
     text-shadow: none !important;
 
     @media (max-width: 654px) {
       font-size: 20px !important;
     }
+  }
+}
+
+.progress-span {
+  font-size: 26px !important;
+  line-height: 26px !important;
+  text-shadow: none !important;
+  color: #fff !important;
+  padding: 8px 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media (max-width: 654px) {
+    font-size: 20px !important;
   }
 }
