@@ -28,7 +28,7 @@ export const User = () => {
           <div className="user-section__info">
             <h4 className="text-shadow">ID {user[0]}</h4>
             <Flex>
-              <span className="text-shadow">{ getShortWallet(wallet!) }</span>
+              <span className="text-shadow">{ wallet !== null ? getShortWallet(wallet) : wallet }</span>
               <button className="btn link-btn p-1">
                 <img className="ms-3" src={link} alt="link" />
               </button>

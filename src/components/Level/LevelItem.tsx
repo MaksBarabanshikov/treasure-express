@@ -1,6 +1,6 @@
 import coin from '../../assets/img/icons/coin.svg';
 import "./Level.scss";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 type Props = {
     level: string
@@ -34,6 +34,8 @@ export const LevelItem = ({
                               referralPayoutSum,
                               disabled
                           }: Props) => {
+
+    const [text, setText] = useState(level);
 
     const isCurrentTypeLevel = () => {
         if (currentType !== undefined) {
@@ -93,6 +95,12 @@ export const LevelItem = ({
         return null
     }
 
+    const onEnter = () => {
+        if (!isCurrentTypeLevel()) {
+            setText('Buy')
+        }
+    }
+
     useEffect(() => {
         if (getPlaceInQueue) {
             getPlaceInQueue(Number(currentLevel));
@@ -101,8 +109,15 @@ export const LevelItem = ({
 
     return (
         <div className="col-6 col-sm-4 col-md-3 p-2">
-            <button disabled={disabled} onClick={handleBuyLevel} className={`btn level-price__item w-100 ${getCurrentLevel()}`}>
-                <h3>{level}</h3>
+            <button
+                disabled={disabled}
+                onMouseEnter={onEnter }
+                onMouseLeave={() => setText(level)}
+                onFocus={() => setText('Buy')}
+                onClick={handleBuyLevel}
+                className={`btn level-price__item w-100 ${getCurrentLevel()}`}
+            >
+                <h3>{text}</h3>
                 {
                     isCurrentTypeLevel() === null &&
                     <div className="level-price__item-price">

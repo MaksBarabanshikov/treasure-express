@@ -64,7 +64,10 @@ export const Registration = () => {
   };
 
   const handleCheckUserId = () => {
-    referIdInput(inputRef.current.value).then((res) => {
+    const currentValue = inputRef.current.value === '' ? 1 : inputRef.current.value
+    referIdInput(currentValue).then((res) => {
+      console.log(currentValue)
+      console.log(res)
       if (res === "0x0000000000000000000000000000000000000000") {
         // setDisabled(true);
         return setError("No such user");
@@ -92,16 +95,15 @@ export const Registration = () => {
     }
 
     // @ts-ignore
-    if (userId !== 1 ) {
+    if (userId > 1 && userId !== 0 ) {
       console.log('userId', userId)
       inputRef.current.value = userId;
     }
   }, [userId]);
 
-  useEffect(() => {
-    const el2 = inputRef.current;
-    console.log('value: ',el2); // 👈️ element here
-  }, [inputRef]);
+  // useEffect(() => {
+  //   const el2 = inputRef.current;
+  // }, [inputRef]);
 
   return (
         <motion.div
@@ -140,7 +142,7 @@ export const Registration = () => {
               <span>Upline address:</span>
               <Row>
                 <div className="input col-6 position-relative">
-                  <input ref={inputRef} onInput={() => handleCheckUserId()} type="text" />
+                  <input type={"number"} ref={inputRef} onInput={handleCheckUserId} />
                   {error !== null && <div className="error-message text-danger position-absolute">{error}</div>}
                   <span className="status"><img src={checkSvg} alt={"treasure-express"} /></span>
                 </div>
