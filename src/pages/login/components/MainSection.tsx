@@ -38,7 +38,7 @@ const MainSection = () => {
     return (
         <section className="main-section d-flex flex-column justify-content-center align-items-center">
             <img src={bigLogo} alt=""/>
-          {isReg === null
+          {wallet === null
             ?
             <button onClick={handleConnectMetamask} className="orange-btn btn mt-5 d-flex align-items-center">
                 Connect to Metamask

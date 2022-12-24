@@ -1,15 +1,12 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { LevelPrice } from "../login/components/LevelPrice";
-import { UserSection } from "./components/UserSection";
-import { Transactions } from "../../components/transaction/Transactions";
-import { transactions } from "../../assets/data/transactions";
-import { InfoSection } from "../../components/infoSection/InfoSection";
-import { Container } from "../../components/layouts/Container";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setUser } from "../../store/slices/UserSlice";
-import { LevelPopup } from "../../components/popup/levelPopup/LevelPopup";
-import Web3 from "web3";
-import { CONTRACT_ADDRESS } from "../../contract/config";
+import React, {useEffect} from "react";
+import {LevelPrice} from "../login/components/LevelPrice";
+import {UserSection} from "./components/UserSection";
+import {Transactions} from "../../components/transaction/Transactions";
+import {InfoSection} from "../../components/infoSection/InfoSection";
+import {Container} from "../../components/layouts/Container";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+import {setUser} from "../../store/slices/UserSlice";
+import {LevelPopup} from "../../components/popup/levelPopup/LevelPopup";
 
 export const MainPage = () => {
   // const [transitions, setTransactions] = useState([]);
