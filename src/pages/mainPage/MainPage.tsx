@@ -54,7 +54,7 @@ export const MainPage = () => {
       <LevelPopup/>
       <Container>
         <LevelPrice col={10} className={"main-level"}/>
-        <InfoSection />
+        <InfoSection paddingBottom={100}/>
         {/*<Transactions items={transactions}/>*/}
       </Container>
     </div>

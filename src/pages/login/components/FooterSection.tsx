@@ -8,7 +8,7 @@ const FooterSection = () => {
   return (
     <section className="footer-section">
       <div className="container">
-        <InfoSection />
+        <InfoSection paddingBottom={0}/>
         <LastSection />
       </div>
     </section>

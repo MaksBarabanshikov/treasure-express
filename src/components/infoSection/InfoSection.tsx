@@ -3,9 +3,19 @@ import { Presentations } from "../../pages/login/components/Presentations";
 import React from "react";
 import "./infoSection.scss"
 
-export const InfoSection = () => {
+interface Props {
+    paddingBottom: number
+}
+
+export const InfoSection = ({ paddingBottom }: Props) => {
+
+    const style = {
+        paddingBottom: paddingBottom
+    }
+
+
     return (
-      <div className="info-section row">
+      <div style={style} className="info-section row">
         <Info/>
         <Presentations/>
       </div>
