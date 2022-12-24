@@ -2,10 +2,9 @@ import {
   Routes,
   Route, Navigate, useNavigate
 } from "react-router-dom";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { setIsReg } from "../store/slices/UserSlice";
-import { stat } from "fs";
 
 const LoginPage = React.lazy(() => import("../pages/login/LoginPage").then(({ LoginPage }) => ({ default: LoginPage })));
 const MainPage = React.lazy(() => import("../pages/mainPage/MainPage").then(({ MainPage }) => ({ default: MainPage })));
@@ -18,16 +17,13 @@ export const RouteList = () => {
     return await CONTRACT_LIST?.methods.isUserRegistered(address).call();
   };
 
-  const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
-  const Protected = (isReg) => {
+  const Protected = () => {
     if (!isReg) {
-      return navigate("/");
+      return <LoginPage />
     }
-
-    return navigate('/main')
+    return <MainPage />
   }
 
 
@@ -37,17 +33,19 @@ export const RouteList = () => {
         dispatch(setIsReg(res))
       })
     }
+    if (!wallet) {
+      dispatch(setIsReg(false));
+    }
   }, [wallet, status]);
 
-
-  useEffect(() => {
-  Protected(isReg)
-  }, [isReg]);
+  //
+  // useEffect(() => {
+  // Protected(isReg)
+  // }, [isReg]);
 
   return (
      <Routes>
-         <Route path="/main" element={<MainPage/>}/>
-         <Route path="/" element={<LoginPage/>}/>
+         <Route path="/" element={Protected()}/>
       </Routes>
   )
 }

@@ -11,6 +11,7 @@ import checkSvg from "../../../assets/img/bg/check.svg";
 import { setRefAddress, setUserId } from "../../../store/slices/ReferSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { dropIn } from "../levelPopup/LevelPopup";
+import {setIsReg} from "../../../store/slices/UserSlice";
 
 export const Registration = () => {
   const [disabled, setDisabled] = useState(true);
@@ -19,7 +20,6 @@ export const Registration = () => {
   const inputRef: any = useRef();
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { CONTRACT_LIST, wallet, currentGasLimit } = useAppSelector(state => state.web3);
   const { userId, refAddress } = useAppSelector(state => state.refer);
   const { regIsVisible } = useAppSelector(state => state.modal);
@@ -29,6 +29,10 @@ export const Registration = () => {
   };
   const referIdInput = async (id) => {
     return await CONTRACT_LIST?.methods.getUserAddressById(id).call();
+  };
+
+  const getIsUserRegistered = async (address: string) => {
+    return await CONTRACT_LIST?.methods.isUserRegistered(address).call();
   };
 
   const handleHideRegistration = async () => {
@@ -56,8 +60,8 @@ export const Registration = () => {
         gasPrice: currentGasLimit
       });
     }
+    await getIsUserRegistered(wallet!).then((reg) => dispatch(setIsReg(reg)))
     await handleHideRegistration();
-    navigate("/main");
   };
 
   const handleCheckUserId = () => {

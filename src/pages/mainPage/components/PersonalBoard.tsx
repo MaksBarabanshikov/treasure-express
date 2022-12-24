@@ -11,9 +11,9 @@ export const PersonalBoard = () => {
 
   const local = 'http://localhost:3000'
 
-  const prod = 'http://treasure.express'
+  const prod = 'https://treasure.express'
 
-  const baseUrl = local
+  const baseUrl = prod
 
   const shortWallet = wallet?.slice(0, 5).concat('...')
 

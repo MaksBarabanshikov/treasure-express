@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { LevelPrice } from "../login/components/LevelPrice";
 import { UserSection } from "./components/UserSection";
 import { Transactions } from "../../components/transaction/Transactions";
-import { ITransaction, transactions } from "../../assets/data/transactions";
+import { transactions } from "../../assets/data/transactions";
 import { InfoSection } from "../../components/infoSection/InfoSection";
 import { Container } from "../../components/layouts/Container";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -12,8 +12,6 @@ import Web3 from "web3";
 import { CONTRACT_ADDRESS } from "../../contract/config";
 
 export const MainPage = () => {
-  // const LevelPopup = React.lazy(() => import('../../components/popup/levelPopup/LevelPopup')
-  //   .then(({ LevelPopup }) => ({ default: LevelPopup })))
   const [transitions, setTransactions] = useState([]);
   const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 

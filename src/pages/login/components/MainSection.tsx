@@ -10,7 +10,6 @@ const MainSection = () => {
     const { CONTRACT_LIST, status } = useAppSelector(state => state.web3)
     const wallet = useAppSelector(state => state.web3.wallet)
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
 
     const getIsUserRegistered = async (address: string) => {
         if (CONTRACT_LIST && address) {
@@ -19,17 +18,15 @@ const MainSection = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(() : void => {
         if (wallet) {
             getIsUserRegistered(wallet)
         }
-    },[wallet])
-
-    useEffect(() => {
-        if (isReg) {
-            navigate('/main')
+        if (!wallet) {
+            setIsReg(false)
         }
-    },[isReg])
+
+    },[wallet])
 
     // @ts-ignore
     const handleConnectMetamask = () => dispatch(connectWeb3())
