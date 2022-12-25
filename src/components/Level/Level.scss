@@ -74,13 +74,13 @@ $dark: #25221A;
     }
 
 
-    @media (max-width: 400px) {
-      padding: 28% 20%;
-    }
-
-    @media (max-width: 366px) {
-      padding: 25% 20%;
-    }
+    //@media (max-width: 400px) {
+    //  padding: 28% 20%;
+    //}
+    //
+    //@media (max-width: 366px) {
+    //  padding: 25% 20%;
+    //}
 
     h3 {
       font-weight: 700;
@@ -191,10 +191,6 @@ $dark: #25221A;
         padding: 26% 20%;
       }
 
-      @media (max-width: 475px) {
-        padding: 26% 20%;
-      }
-
       @media (max-width: 452px) {
         padding: 25% 20%;
       }
@@ -207,8 +203,24 @@ $dark: #25221A;
         padding: 28% 20%;
       }
 
+      @media (max-width: 390px) {
+        padding: 27% 20%;
+      }
+
+      @media (max-width: 380px) {
+        padding: 26% 20%;
+      }
+
+      //@media (max-width: 370px) {
+      //  padding: 28% 20%;
+      //}
+
       @media (max-width: 366px) {
         padding: 25% 20%;
+      }
+
+      @media (max-width: 350px) {
+        padding: 23% 20%;
       }
 
       @media (max-width: 336px) {
@@ -272,5 +284,4 @@ $dark: #25221A;
       }
     }
   }
-
 }

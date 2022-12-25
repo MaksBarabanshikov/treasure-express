@@ -1,6 +1,7 @@
 import coin from '../../assets/img/icons/coin.svg';
 import "./Level.scss";
 import {useEffect, useState} from "react";
+import {motion} from "framer-motion";
 
 type Props = {
     level: string
@@ -111,13 +112,12 @@ export const LevelItem = ({
         <div className="col-6 col-sm-4 col-md-3 p-2">
             <button
                 disabled={disabled}
-                onMouseEnter={onEnter }
+                onMouseEnter={onEnter}
                 onMouseLeave={() => setText(level)}
-                onFocus={() => setText('Buy')}
                 onClick={handleBuyLevel}
                 className={`btn level-price__item w-100 ${getCurrentLevel()}`}
             >
-                <h3>{text}</h3>
+                <motion.h3>{text}</motion.h3>
                 {
                     isCurrentTypeLevel() === null &&
                     <div className="level-price__item-price">

@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from "react";
 import { BNB, getShortContract } from "../../../helper";
 
-import copyIcon from "../../../assets/img/icons/copy_icon.svg"
 import linkIcon from "../../../assets/img/icons/link_icon.svg"
 import {useAppSelector} from "../../../hooks/hooks";
 import {TREASURE_EXPRESS_ADDRESS} from "../../../contract/config";
 import toast from "react-hot-toast";
-import { LinkIcon } from "../../../components/Icons/LinkIcon";
 import { CopyIcon } from "../../../components/Icons/copyIcon";
 
 export const Info = () => {
     const [statistics, setStatistic] = useState(null)
     const [oldStat, setOldStat] = useState(null)
-    const { CONTRACT_LIST } = useAppSelector(state => state.web3)
+    const { CONTRACT_LIST, wallet } = useAppSelector(state => state.web3)
 
     const getGlobalStatistic = async () => {
         if (CONTRACT_LIST) {
@@ -33,10 +31,8 @@ export const Info = () => {
     }
 
     useEffect(() => {
-        if ( CONTRACT_LIST !== null) {
-            getGlobalStatistic()
-        }
-    },[CONTRACT_LIST])
+        getGlobalStatistic()
+    },[CONTRACT_LIST, wallet])
 
     const handleCopy = () => {
         notify();
