@@ -141,7 +141,7 @@ export const Registration = () => {
             <div className="input-label w-100">
               <span>Upline address:</span>
               <Row>
-                <div className="input col-6 position-relative">
+                <div className="input col-12 position-relative">
                   <input type={"number"} ref={inputRef} onInput={handleCheckUserId} />
                   {error !== null && <div className="error-message text-danger position-absolute">{error}</div>}
                   <span className="status"><img src={checkSvg} alt={"treasure-express"} /></span>

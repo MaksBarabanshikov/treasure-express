@@ -24,12 +24,11 @@ function App() {
 
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider);
-        const list = await new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-        dispatch(getListABI(list));
+        return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
     }
 
     useEffect(() => {
-        connectContract().then()
+        connectContract().then((list) => dispatch(getListABI(list)))
 
         const accounts: any = localStorage.getItem("accounts")
           ? JSON.parse(localStorage.getItem("accounts")!)

@@ -73,7 +73,7 @@ export const Info = () => {
                         <span>
                             +
                             {
-                                oldStat && statistics ? statistics[0] - oldStat[0] : 14
+                                oldStat && statistics ? statistics[0] - oldStat[0] : 0
                             }
                         </span>
                     </div>
@@ -83,7 +83,7 @@ export const Info = () => {
                         <span>
                             +
                             {
-                                oldStat && statistics ? statistics[1] - oldStat[1] : 100
+                                oldStat && statistics ? statistics[1] - oldStat[1] : 0
                             }
                         </span>
                     </div>
@@ -93,7 +93,7 @@ export const Info = () => {
                         <span>
                             +
                             {
-                                 oldStat && statistics ? (Number(BNB(statistics[2])) - Number(BNB(oldStat[2]))).toFixed(1) : 743.4
+                                 oldStat && statistics ? (Number(BNB(statistics[2])) - Number(BNB(oldStat[2]))).toFixed(1) : 0
                             }
                         </span>
                     </div>
