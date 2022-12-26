@@ -24,7 +24,7 @@ function App() {
 
     const connectContract = async () => {
         const web3 = new Web3(Web3.givenProvider);
-        return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+        return new web3.eth.Contract(TREASURE_EXPRESS_ABI, TREASURE_EXPRESS_ADDRESS);
     }
 
     useEffect(() => {

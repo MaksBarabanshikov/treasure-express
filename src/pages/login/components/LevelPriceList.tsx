@@ -50,6 +50,7 @@ export const LevelPriceList = ({userLevels, prices, buyLevel, toggleModal, getPl
                             getPlaceInQueue={getPlaceInQueue}
                             toggleModal={toggleModal}
                             disabled={disabled(index)}
+                            isMain={isMain}
                         />
                     )
                 )

@@ -16,8 +16,10 @@ type Props = {
     currentType?: boolean
     payoutCounter?: number
     payoutsLimit?: number,
-    referralPayoutSum?: number
-    disabled?: boolean
+    referralPayoutSum?: number,
+    disabled?: boolean,
+    isMain?: boolean
+
 };
 
 export const LevelItem = ({
@@ -33,7 +35,8 @@ export const LevelItem = ({
                               payoutsLimit,
                               getPlaceInQueue,
                               referralPayoutSum,
-                              disabled
+                              disabled,
+                              isMain
                           }: Props) => {
 
     const [text, setText] = useState(level);
@@ -97,8 +100,14 @@ export const LevelItem = ({
     }
 
     const onEnter = () => {
-        if (!isCurrentTypeLevel()) {
+        if (!isCurrentTypeLevel() && isMain) {
             setText('Buy')
+        }
+    }
+
+    const onLeave = () => {
+        if (!isCurrentTypeLevel() && isMain) {
+            setText(level)
         }
     }
 
@@ -113,7 +122,7 @@ export const LevelItem = ({
             <button
                 disabled={disabled}
                 onMouseEnter={onEnter}
-                onMouseLeave={() => setText(level)}
+                onMouseLeave={onLeave}
                 onClick={handleBuyLevel}
                 className={`btn level-price__item w-100 ${getCurrentLevel()}`}
             >
