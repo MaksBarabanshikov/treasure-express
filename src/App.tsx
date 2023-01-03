@@ -23,7 +23,7 @@ function App() {
     const dispatch = useAppDispatch()
 
     const connectContract = async () => {
-        const web3 = new Web3(Web3.givenProvider);
+        const web3 = new Web3(Web3.givenProvider || 'https://bsc-dataseed.binance.org/');
         return new web3.eth.Contract(TREASURE_EXPRESS_ABI, TREASURE_EXPRESS_ADDRESS);
     }
 
