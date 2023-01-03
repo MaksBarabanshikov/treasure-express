@@ -19,13 +19,17 @@ export const Info = () => {
             if (localStorage.getItem('statistics')) {
                 const stat = JSON.parse(localStorage.getItem('statistics')!)
                 setOldStat(stat)
-                if (stat[3] !== new Date().getDate()) {
+                console.log();
+                if (new Date(stat[3]).getDate() <= new Date().getDate()) {
                     localStorage.removeItem('statistics')
                 }
             }
             else {
-                console.log('else')
-                localStorage.setItem('statistics', JSON.stringify([...statistics, new Date().getDate()]))
+                const nextWeek = new Date();
+
+                nextWeek.setDate(new Date().getDate() + 7);
+
+                localStorage.setItem('statistics', JSON.stringify([...statistics, nextWeek]))
             }
         }
     }

@@ -50,7 +50,7 @@ export const LevelPopup = () => {
         await getPlaceInQueue().then((res) => {
           console.log(res);
           const value = Math.round(((res[0] - 1) / res[1]) * 100);
-          const text = res[1] - (res[0] - 1);
+          const text = res[1] - (res[0]);
           setQueue({value, text: text + ' ' + 'ahead'});
         })
       }
