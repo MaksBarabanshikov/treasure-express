@@ -23,8 +23,9 @@ function App() {
     const dispatch = useAppDispatch()
 
     const connectContract = async () => {
-        const web3 = new Web3(Web3.givenProvider || 'https://bsc-dataseed.binance.org/');
-        return new web3.eth.Contract(TREASURE_EXPRESS_ABI, TREASURE_EXPRESS_ADDRESS);
+        // const web3 = new Web3('https://bsc-dataseed.binance.org/');
+        const web3 = new Web3('http://127.0.0.1:7545');
+        return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
     }
 
     useEffect(() => {

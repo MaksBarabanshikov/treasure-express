@@ -49,9 +49,12 @@ export const LevelPopup = () => {
       const queueAsync = async () => {
         await getPlaceInQueue().then((res) => {
           console.log(res);
-          const value = Math.round(((res[0] - 1) / res[1]) * 100);
-          const text = res[1] - (res[0]);
-          setQueue({value, text: text + ' ' + 'ahead'});
+          const placeInLine = Number(res[0]) === 1 ? res[0] : Number(res[0]) - 1;
+          const totalSeats = Number(res[1]);
+          const currentValue =  1 - (placeInLine / totalSeats)
+          const value = Math.round(currentValue * 100);
+          console.log(placeInLine);
+          setQueue({value, text: placeInLine + ' ' + 'ahead'});
         })
       }
 
